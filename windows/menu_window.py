@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets
 
 import windows.login_window as login
 import windows.info_window as info
+import windows.training_window as training
 from ui.menu import Ui_Menu
 
 
@@ -33,10 +34,9 @@ class Menu(QtWidgets.QMainWindow):
         self.close()
 
     def start_training(self):
-        pass
-        # self.open_training = test3.Training(Menu.menu_info)
-        # self.open_training.show()
-        # self.close()
+        self.open_training = training.Training(Menu.menu_info)
+        self.open_training.show()
+        self.close()
 
     def start_recognition(self):
         pass
