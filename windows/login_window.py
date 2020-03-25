@@ -3,7 +3,7 @@ import sys
 from PyQt5 import QtWidgets
 
 from ui.login import Ui_Login
-
+import windows.menu_window as menu
 
 class Login(QtWidgets.QMainWindow):
     def __init__(self):
@@ -19,15 +19,14 @@ class Login(QtWidgets.QMainWindow):
         self.ui.lineEdit_host.setText("127.0.0.1")
 
     def start_menu(self):
-        pass
-        # info = []
-        # info.append(self.ui.lineEdit_db.text())
-        # info.append(self.ui.lineEdit_user.text())
-        # info.append(self.ui.lineEdit_password.text())
-        # info.append(self.ui.lineEdit_host.text())
-        # self.open_menu = test2.Menu(info)
-        # self.open_menu.show()
-        # self.close()
+        info = []
+        info.append(self.ui.lineEdit_db.text())
+        info.append(self.ui.lineEdit_user.text())
+        info.append(self.ui.lineEdit_password.text())
+        info.append(self.ui.lineEdit_host.text())
+        self.open_menu = menu.Menu(info)
+        self.open_menu.show()
+        self.close()
 
 
 if __name__ == '__main__':
