@@ -3,6 +3,7 @@ import sys
 from PyQt5 import QtWidgets
 
 import windows.login_window as login
+import windows.info_window as info
 from ui.menu import Ui_Menu
 
 
@@ -27,10 +28,9 @@ class Menu(QtWidgets.QMainWindow):
         self.close()
 
     def start_info(self):
-        pass
-        # self.open_info = test1.Info(Menu.menu_info)
-        # self.open_info.show()
-        # self.close()
+        self.open_info = info.Info(Menu.menu_info)
+        self.open_info.show()
+        self.close()
 
     def start_training(self):
         pass

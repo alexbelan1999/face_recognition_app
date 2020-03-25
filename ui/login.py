@@ -59,7 +59,7 @@ class Ui_Login(object):
         self.lineEdit_host.setObjectName("lineEdit_host")
 
         self.pushButton_test = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_test.setGeometry(QtCore.QRect(50, 340, 80, 30))
+        self.pushButton_test.setGeometry(QtCore.QRect(50, 340, 85, 30))
         self.pushButton_test.setFont(font)
         self.pushButton_test.clicked.connect(self.test)
         self.pushButton_test.setObjectName("pushButton_test")
@@ -70,7 +70,7 @@ class Ui_Login(object):
         self.label_check.setObjectName("label_check")
 
         self.pushButton_menu = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_menu.setGeometry(QtCore.QRect(150, 340, 80, 30))
+        self.pushButton_menu.setGeometry(QtCore.QRect(145, 340, 85, 30))
         self.pushButton_menu.setFont(font)
         self.pushButton_menu.setObjectName("pushButton_menu")
 
