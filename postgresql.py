@@ -66,21 +66,20 @@ def test_connection(dbname: str, user: str, password: str, host: str):
     return exit
 
 
-def select():
+def select(info : list, sql : str):
     exit = True
     result = []
     try:
-        sql = "SELECT id, name , addtime from persons;"
-        connection = psycopg2.connect(dbname='testdb', user='postgres', password='1234', host='127.0.0.1')
-        print(connection)
-        # if connection.is_connected():
-        #     print('Connected to PostgreSQL database')
+        connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3])
         with connection.cursor() as cursor:
             cursor.execute(sql)
             rows = cursor.fetchall()
+            column = len(rows[0])
             for row in rows:
-                # print("Id: ", row[0], " Имя: ", row[1], " Время: ", row[2])
-                result.append([row[0], row[1], row[2]])
+                res = []
+                for i in range(column):
+                    res.append(row[i])
+                result.append(res)
             connection.commit()
             cursor.close()
 

@@ -6,6 +6,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
 import windows.recognition_window as recognition
+import windows.progress_photo_recognition_window as progress
 from ui.photo_recognition import Ui_Photo_recognition
 
 
@@ -13,7 +14,6 @@ class Photo_recognition(QtWidgets.QMainWindow):
     file1 = ""
     file2 = ""
     dir = ""
-    filesdict = {}
     photo_recognition_info = []
 
     def __init__(self, info=["", "", "", ""]):
@@ -21,12 +21,10 @@ class Photo_recognition(QtWidgets.QMainWindow):
         self.ui = Ui_Photo_recognition()
         self.ui.setupUi(self)
         Photo_recognition.photo_recognition_info = info
-        filesdict = {}
         path = "../pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
-            Photo_recognition.filesdict[item] = file
 
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
@@ -39,14 +37,12 @@ class Photo_recognition(QtWidgets.QMainWindow):
         self.close()
 
     def next(self):
-        file = self.ui.comboBox.currentText()
-        Photo_recognition.file1 = Photo_recognition.filesdict.get(file)
-        Photo_recognition.file2 = "../pickle/names/" + file + "names.pickle"
+        Photo_recognition.file1 = self.ui.comboBox.currentText()
+        Photo_recognition.file2 = Photo_recognition.file1 + "names"
         Photo_recognition.dir = self.ui.lineEdit_dir.text()
-        print(Photo_recognition.file1, "  ",Photo_recognition.file2 ,"  ", Photo_recognition.dir)
-        # self.open_progressrec = test7.Progress_recognition(Photo_recognition.photo_recognition_info, Photo_recognition.file, Photo_recognition.dir)
-        # self.open_progressrec.show()
-        # self.close()
+        self.open_progressrec = progress.Progress_photo_recognition(Photo_recognition.photo_recognition_info, Photo_recognition.file1, Photo_recognition.file2, Photo_recognition.dir)
+        self.open_progressrec.show()
+        self.close()
 
     def open_dir(self):
         dir = QFileDialog.getExistingDirectory(self, 'Open dir', '..')
