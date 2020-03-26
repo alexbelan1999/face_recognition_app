@@ -50,8 +50,8 @@ class Progress_training(QtWidgets.QMainWindow):
             known_face_names.append(os.path.splitext(os.path.basename(file))[0])
             self.ui.progressBar.setValue(round(number / files, 2) * 100)
 
-        dalp.dump(known_face_encodings, Progress_training.file)
-        dalp.dump(known_face_names, Progress_training.file + "names")
+        dalp.dump(known_face_encodings, Progress_training.file, 0)
+        dalp.dump(known_face_names, Progress_training.file + "names", 1)
         if number == files:
             self.ui.pushButton_exit.setDisabled(False)
             self.ui.pushButton_menu.setDisabled(False)
