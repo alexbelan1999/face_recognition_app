@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets
 
 import windows.menu_window as menu
 import windows.photo_recognition_window as photo
+import windows.video_recognition_window as video
 from ui.recognition import Ui_Recognition
 
 class Recognition(QtWidgets.QMainWindow):
@@ -17,7 +18,7 @@ class Recognition(QtWidgets.QMainWindow):
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_photo.clicked.connect(self.start_photo)
-        self.ui.pushButton_video.clicked.connect(self.start_rec3)
+        self.ui.pushButton_video.clicked.connect(self.start_video)
         self.ui.pushButton_camera.clicked.connect(self.start_camera)
 
     def back(self):
@@ -30,9 +31,9 @@ class Recognition(QtWidgets.QMainWindow):
         self.open_photo.show()
         self.close()
 
-    def start_rec3(self):
-        # self.open_rec3 = test8.Rec3(Recognition.recognition_info)
-        # self.open_rec3.show()
+    def start_video(self):
+        self.open_video = video.Video_recognition(Recognition.recognition_info)
+        self.open_video.show()
         self.close()
 
     def start_camera(self):
