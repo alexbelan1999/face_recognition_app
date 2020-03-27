@@ -1,14 +1,16 @@
 import psycopg2
 
 
-def insert(persons: list):
+def insert(info: list, students: list):
     exit = True
     try:
 
-        connection = psycopg2.connect(dbname='testdb', user='postgres', password='1234', host='127.0.0.1')
+        connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3])
         with connection.cursor() as cursor:
-            for person in persons:
-                sql = "INSERT INTO public.persons (name, addtime) VALUES ('" + person[0] + "', '" + person[1] + "');"
+            for student in students:
+                sql = "INSERT INTO public.attendance(student_id, instructor_id, subject_id, class_type_id, classes_id, class_date) VALUES (" + \
+                      str(student[0]) + "," + str(student[1]) + "," + str(student[2]) + "," + str(
+                    student[3]) + "," + str(student[4]) + ",'" + str(student[5]) + "');"
                 cursor.execute(sql)
             connection.commit()
             cursor.close()
@@ -66,7 +68,7 @@ def test_connection(dbname: str, user: str, password: str, host: str):
     return exit
 
 
-def select(info : list, sql : str):
+def select(info: list, sql: str):
     exit = True
     result = []
     try:

@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets
 import dump_and_load_pickle as dalp
 import postgresql as pg
 import windows.menu_window as menu
+import windows.report_window as reportw
 from ui.progress_photo_recognition import Ui_Progress_photo_recognition
 
 
@@ -15,13 +16,13 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
     file1 = ""
     file2 = ""
     dir = ""
-    progress_recognition_info = []
+    progress_photo_info = []
 
     def __init__(self, info=["", "", "", ""], file1="", file2="", dir=""):
         super(Progress_photo_recognition, self).__init__()
         self.ui = Ui_Progress_photo_recognition()
         self.ui.setupUi(self)
-        Progress_photo_recognition.progress_recognition_info = info
+        Progress_photo_recognition.progress_photo_info = info
         Progress_photo_recognition.file1 = file1
         Progress_photo_recognition.file2 = file2
         Progress_photo_recognition.dir = dir
@@ -90,14 +91,15 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
     def report(self):
         report = self.ui.textEdit.toPlainText()
         report = list(report.split('\n'))
-        print(report)
-        # person = ["Alex","Dima","Vitaly","Ivan","Petr","Artem","Andrey","Alex","Dima","Vitaly","Ivan","Petr","Artem","Andrey","Alex","Dima","Vitaly","Ivan","Petr","Artem","Andrey","Alex","Dima","Vitaly","Ivan","Petr","Artem","Andrey"]
-        # self.open_report = test11.Report(Progress_photo_recognition.progress_recognition_info,person)
-        # self.open_report.show()
-        # self.close()
+        self.open_report = reportw.Report(Progress_photo_recognition.progress_photo_info, report,
+                                         Progress_photo_recognition.file1)
+        self.open_report.show()
+        self.close()
+
     def add(self):
         person = self.ui.comboBox.currentText()
         self.ui.textEdit.append(person)
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
