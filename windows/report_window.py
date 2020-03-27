@@ -71,7 +71,7 @@ class Report(QtWidgets.QMainWindow):
         self.ui.pushButton_send.clicked.connect(self.send)
 
     def back_menu(self):
-        self.open_menu = menu.Menu(Report.progress_recognition_info)
+        self.open_menu = menu.Menu(Report.report_info)
         self.open_menu.show()
         self.close()
 

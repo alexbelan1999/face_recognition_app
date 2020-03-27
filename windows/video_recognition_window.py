@@ -6,6 +6,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
 import windows.recognition_window as recognition
+import windows.progress_video_recognition_window as progressv
 from ui.video_recognition import Ui_Video_recognition
 
 
@@ -38,10 +39,10 @@ class Video_recognition(QtWidgets.QMainWindow):
     def next(self):
         Video_recognition.file = self.ui.comboBox.currentText()
         Video_recognition.video = self.ui.lineEdit_file.text()
-        Video_recognition.seconds = self.ui.lineEdit_seconds.text()
+        Video_recognition.seconds = float(self.ui.lineEdit_seconds.text())
         print(Video_recognition.video," ",Video_recognition.file, " ", Video_recognition.seconds)
-        # self.open_progressrec1 = test9.Progress_recognition1(Video_recognition.video_recognition_info, Video_recognition.file, Video_recognition.video)
-        # self.open_progressrec1.show()
+        self.open_progressrec1 = progressv.Progress_video_recognition(Video_recognition.video_recognition_info, Video_recognition.file, Video_recognition.video, Video_recognition.seconds)
+        self.open_progressrec1.show()
         self.close()
 
     def open_file(self):
