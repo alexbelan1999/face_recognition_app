@@ -3,6 +3,7 @@ import sys
 from PyQt5 import QtWidgets
 
 import windows.menu_window as menu
+import windows.db_report_window as reportw
 from ui.db_menu import Ui_DB_menu
 import postgresql as pg
 
@@ -56,7 +57,10 @@ class DB_menu(QtWidgets.QMainWindow):
         group_id = DB_menu.group1.get(self.ui.comboBox_group.currentText())
         subject_id = DB_menu.subject1.get(self.ui.comboBox_subject.currentText())
         type_id = DB_menu.class_type1.get(self.ui.comboBox_class_type.currentText())
-        print(instructor_id," ",group_id," ",subject_id," ",type_id)
+        self.open_report = reportw.DB_report(DB_menu.DB_menu_info,int(instructor_id),int(group_id),int(subject_id),int(type_id))
+        self.open_report.show()
+        self.close()
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     application = DB_menu()
