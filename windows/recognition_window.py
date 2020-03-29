@@ -5,6 +5,7 @@ from PyQt5 import QtWidgets
 import windows.menu_window as menu
 import windows.photo_recognition_window as photo
 import windows.video_recognition_window as video
+import windows.web_camera_window as web_camera
 from ui.recognition import Ui_Recognition
 
 class Recognition(QtWidgets.QMainWindow):
@@ -37,8 +38,8 @@ class Recognition(QtWidgets.QMainWindow):
         self.close()
 
     def start_camera(self):
-        # self.open_camera = webcamera.Camera(Recognition.recognition_info)
-        # self.open_camera.show()
+        self.open_camera = web_camera.Web_camera(Recognition.recognition_info)
+        self.open_camera.show()
         self.close()
 
 
