@@ -51,7 +51,7 @@ class Photo_recognition(QtWidgets.QMainWindow):
             model = "cnn"
         self.open_progressrec = progress.Progress_photo_recognition(Photo_recognition.photo_recognition_info,
                                                                     Photo_recognition.file1, Photo_recognition.file2,
-                                                                    Photo_recognition.dir)
+                                                                    Photo_recognition.dir, model, tolerance)
         self.open_progressrec.show()
         self.close()
 

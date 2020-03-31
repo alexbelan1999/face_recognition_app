@@ -1,12 +1,11 @@
 import glob
 import os
-import sys
 
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
-import windows.recognition_window as recognition
 import windows.progress_video_recognition_window as progressv
+import windows.recognition_window as recognition
 from ui.video_recognition import Ui_Video_recognition
 
 
@@ -26,6 +25,8 @@ class Video_recognition(QtWidgets.QMainWindow):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
 
+        self.ui.radioButton1.setChecked(True)
+        self.ui.lineEdit_tolerance.setText("0.6")
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_next.clicked.connect(self.next)
@@ -40,19 +41,19 @@ class Video_recognition(QtWidgets.QMainWindow):
         Video_recognition.file = self.ui.comboBox.currentText()
         Video_recognition.video = self.ui.lineEdit_file.text()
         Video_recognition.seconds = float(self.ui.lineEdit_seconds.text())
-        print(Video_recognition.video," ",Video_recognition.file, " ", Video_recognition.seconds)
-        self.open_progressrec1 = progressv.Progress_video_recognition(Video_recognition.video_recognition_info, Video_recognition.file, Video_recognition.video, Video_recognition.seconds)
+        tolerance = float(self.ui.lineEdit_tolerance.text())
+
+        model = ""
+        if self.ui.radioButton1.isChecked():
+            model = "hog"
+        else:
+            model = "cnn"
+        self.open_progressrec1 = progressv.Progress_video_recognition(Video_recognition.video_recognition_info,
+                                                                      Video_recognition.file, Video_recognition.video,
+                                                                      Video_recognition.seconds, model, tolerance)
         self.open_progressrec1.show()
         self.close()
 
     def open_file(self):
         video = QFileDialog.getOpenFileName(self, 'Open file', "..", "*mp4 *avi")[0]
         self.ui.lineEdit_file.setText(video)
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Video_recognition()
-    application.show()
-
-    sys.exit(app.exec())
