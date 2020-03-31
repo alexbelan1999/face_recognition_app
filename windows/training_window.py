@@ -1,6 +1,3 @@
-import os
-import sys
-
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
@@ -19,6 +16,7 @@ class Training(QtWidgets.QMainWindow):
         self.ui = Ui_Training()
         self.ui.setupUi(self)
         Training.training_info = info
+
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_next.clicked.connect(self.next)
@@ -37,13 +35,5 @@ class Training(QtWidgets.QMainWindow):
         self.close()
 
     def open_dir(self):
-        fdir = QFileDialog.getExistingDirectory(self, 'Open dir', '..')
-        self.ui.lineEdit_dir.setText(fdir)
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Training()
-    application.show()
-
-    sys.exit(app.exec())
+        dir = QFileDialog.getExistingDirectory(self, 'Open dir', '..')
+        self.ui.lineEdit_dir.setText(dir)
