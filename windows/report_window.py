@@ -1,5 +1,4 @@
 import datetime
-import sys
 
 from PyQt5 import QtWidgets
 
@@ -48,14 +47,13 @@ class Report(QtWidgets.QMainWindow):
             Report.subject1[subject[1]] = subject[0]
 
         sql4 = "SELECT id, name FROM public.class_type;"
-        class_type2 = pg.select(info,sql4)
+        class_type2 = pg.select(info, sql4)
         for class_type in class_type2:
             self.ui.comboBox_type.addItem(class_type[1])
             Report.class_type1[class_type[1]] = class_type[0]
 
-
         sql5 = "SELECT id, start_time, end_time FROM public.classes;"
-        time_class = pg.select(info,sql5)
+        time_class = pg.select(info, sql5)
         time1 = datetime.datetime.now().strftime("%H:%M:%S")
 
         for time_c in time_class:
@@ -92,15 +90,6 @@ class Report(QtWidgets.QMainWindow):
 
         students = []
         for i in student_id:
-            print([i, instructor_id, subject_id, type_id, class_id, class_date])
             students.append([i, instructor_id, subject_id, type_id, class_id, class_date])
 
         pg.insert(Report.report_info, students)
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Report()
-    application.show()
-
-    sys.exit(app.exec())
