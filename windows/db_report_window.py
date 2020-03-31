@@ -3,7 +3,7 @@ import sys
 from PyQt5 import QtWidgets, QtGui
 
 import postgresql as pg
-import windows.menu_window as menu
+import windows.db_menu_window as menu
 from ui.db_report import Ui_DB_report
 
 
@@ -83,7 +83,7 @@ class DB_report(QtWidgets.QMainWindow):
         self.ui.pushButton_back.clicked.connect(self.back_menu)
 
     def back_menu(self):
-        self.open_menu = menu.Menu(DB_report.DB_report_info)
+        self.open_menu = menu.DB_menu(DB_report.DB_report_info)
         self.open_menu.show()
         self.close()
 

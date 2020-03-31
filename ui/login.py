@@ -6,7 +6,7 @@ import postgresql as pg
 class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")
-        Login.setFixedSize(280, 470)
+        Login.setFixedSize(300, 470)
         ico = QtGui.QIcon("mylogo.png")
         Login.setWindowIcon(ico)
         font = QtGui.QFont()
@@ -17,65 +17,65 @@ class Ui_Login(object):
         self.centralwidget.setObjectName("centralwidget")
 
         self.label_db = QtWidgets.QLabel(self.centralwidget)
-        self.label_db.setGeometry(QtCore.QRect(50, 20, 180, 30))
+        self.label_db.setGeometry(QtCore.QRect(50, 20, 200, 30))
         self.label_db.setFont(font)
         self.label_db.setObjectName("label_db")
 
         self.lineEdit_db = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_db.setGeometry(QtCore.QRect(50, 60, 180, 30))
+        self.lineEdit_db.setGeometry(QtCore.QRect(50, 60, 200, 30))
         self.lineEdit_db.setFont(font)
         self.lineEdit_db.setObjectName("lineEdit_db")
 
         self.label_user = QtWidgets.QLabel(self.centralwidget)
-        self.label_user.setGeometry(QtCore.QRect(50, 100, 180, 30))
+        self.label_user.setGeometry(QtCore.QRect(50, 100, 200, 30))
         self.label_user.setFont(font)
         self.label_user.setObjectName("label_user")
 
         self.lineEdit_user = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_user.setGeometry(QtCore.QRect(50, 140, 180, 30))
+        self.lineEdit_user.setGeometry(QtCore.QRect(50, 140, 200, 30))
         self.lineEdit_user.setFont(font)
         self.lineEdit_user.setObjectName("lineEdit_user")
 
         self.label_password = QtWidgets.QLabel(self.centralwidget)
-        self.label_password.setGeometry(QtCore.QRect(50, 180, 180, 30))
+        self.label_password.setGeometry(QtCore.QRect(50, 180, 200, 30))
         self.label_password.setFont(font)
         self.label_password.setObjectName("label_password")
 
         self.lineEdit_password = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_password.setGeometry(QtCore.QRect(50, 220, 180, 30))
+        self.lineEdit_password.setGeometry(QtCore.QRect(50, 220, 200, 30))
         self.lineEdit_password.setFont(font)
         self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_password.setObjectName("lineEdit_password")
 
         self.label_host = QtWidgets.QLabel(self.centralwidget)
-        self.label_host.setGeometry(QtCore.QRect(50, 260, 180, 30))
+        self.label_host.setGeometry(QtCore.QRect(50, 260, 200, 30))
         self.label_host.setFont(font)
         self.label_host.setObjectName("label_host")
 
         self.lineEdit_host = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_host.setGeometry(QtCore.QRect(50, 300, 180, 30))
+        self.lineEdit_host.setGeometry(QtCore.QRect(50, 300, 200, 30))
         self.lineEdit_host.setFont(font)
         self.lineEdit_host.setInputMask("000.000.000.000;_")
         self.lineEdit_host.setObjectName("lineEdit_host")
 
         self.pushButton_test = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_test.setGeometry(QtCore.QRect(50, 340, 85, 30))
+        self.pushButton_test.setGeometry(QtCore.QRect(50, 340, 95, 30))
         self.pushButton_test.setFont(font)
         self.pushButton_test.clicked.connect(self.test)
         self.pushButton_test.setObjectName("pushButton_test")
 
         self.label_check = QtWidgets.QLabel(self.centralwidget)
-        self.label_check.setGeometry(QtCore.QRect(50, 380, 80, 30))
+        self.label_check.setGeometry(QtCore.QRect(50, 380, 95, 30))
         self.label_check.setFont(font)
         self.label_check.setObjectName("label_check")
 
         self.pushButton_menu = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_menu.setGeometry(QtCore.QRect(145, 340, 85, 30))
+        self.pushButton_menu.setGeometry(QtCore.QRect(155, 340, 95, 30))
         self.pushButton_menu.setFont(font)
         self.pushButton_menu.setObjectName("pushButton_menu")
 
         self.pushButton_exit = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_exit.setGeometry(QtCore.QRect(50, 420, 80, 30))
+        self.pushButton_exit.setGeometry(QtCore.QRect(50, 420, 95, 30))
         self.pushButton_exit.setFont(font)
         self.pushButton_test.setObjectName("pushButton_exit")
 
