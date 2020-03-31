@@ -1,5 +1,4 @@
 import glob
-import sys
 
 import face_recognition
 import numpy as np
@@ -20,17 +19,20 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
     tolerance = 0.6
     progress_photo_info = []
 
-    def __init__(self, info=["", "", "", ""], file1="", file2="", dir="", model = "", tolerance = 0.6):
+    def __init__(self, info=["", "", "", ""], file1="", file2="", dir="", model="", tolerance=0.6):
         super(Progress_photo_recognition, self).__init__()
         self.ui = Ui_Progress_photo_recognition()
         self.ui.setupUi(self)
+
         Progress_photo_recognition.progress_photo_info = info
         Progress_photo_recognition.file1 = file1
         Progress_photo_recognition.file2 = file2
         Progress_photo_recognition.dir = dir
-        self.ui.progressBar.setValue(0)
         Progress_photo_recognition.model = model
         Progress_photo_recognition.tolerance = tolerance
+
+        self.ui.progressBar.setValue(0)
+
         sql = "SELECT full_name FROM public.students WHERE group_id = (SELECT id FROM public.groups WHERE name = '" + file1 + "');"
         names = pg.select(info, sql)
         for name in names:
@@ -56,15 +58,13 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
 
     def progress(self):
         path = Progress_photo_recognition.dir + "/*"
-        print(path)
-        print(Progress_photo_recognition.file1, " ", Progress_photo_recognition.file2)
         known_face_encodings = dalp.load(Progress_photo_recognition.file1, 0)
         known_face_names = dalp.load(Progress_photo_recognition.file2, 1)
         files = len(glob.glob(path))
         number = 0
         names = set()
+
         for file in glob.glob(path):
-            print(file)
             number += 1
             unknown_image = face_recognition.load_image_file(file)
 
@@ -72,7 +72,8 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
             face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
 
             for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance= Progress_photo_recognition.tolerance)
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding,
+                                                         tolerance=Progress_photo_recognition.tolerance)
                 name = "Unknown"
 
                 face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
@@ -96,18 +97,10 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
         report = self.ui.textEdit.toPlainText()
         report = list(report.split('\n'))
         self.open_report = reportw.Report(Progress_photo_recognition.progress_photo_info, report,
-                                         Progress_photo_recognition.file1)
+                                          Progress_photo_recognition.file1)
         self.open_report.show()
         self.close()
 
     def add(self):
         person = self.ui.comboBox.currentText()
         self.ui.textEdit.append(person)
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Progress_photo_recognition()
-    application.show()
-
-    sys.exit(app.exec())

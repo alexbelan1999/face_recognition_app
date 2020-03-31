@@ -73,7 +73,8 @@ class Ui_Progress_photo_recognition(object):
 
     def retranslateUi(self, Progress_photo_recognition):
         _translate = QtCore.QCoreApplication.translate
-        Progress_photo_recognition.setWindowTitle(_translate("Progress_photo_recognition", "Progress_photo_recognition"))
+        Progress_photo_recognition.setWindowTitle(
+            _translate("Progress_photo_recognition", "Progress_photo_recognition"))
         self.label_progress.setText(_translate("Progress_photo_recognition", "Обработка файлов"))
         self.pushButton_menu.setText(_translate("Progress_photo_recognition", "В главное меню"))
         self.pushButton_exit.setText(_translate("Progress_photo_recognition", "Выход"))
