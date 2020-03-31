@@ -16,9 +16,11 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
     file1 = ""
     file2 = ""
     dir = ""
+    model = ""
+    tolerance = 0.6
     progress_photo_info = []
 
-    def __init__(self, info=["", "", "", ""], file1="", file2="", dir=""):
+    def __init__(self, info=["", "", "", ""], file1="", file2="", dir="", model = "", tolerance = 0.6):
         super(Progress_photo_recognition, self).__init__()
         self.ui = Ui_Progress_photo_recognition()
         self.ui.setupUi(self)
@@ -27,6 +29,8 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
         Progress_photo_recognition.file2 = file2
         Progress_photo_recognition.dir = dir
         self.ui.progressBar.setValue(0)
+        Progress_photo_recognition.model = model
+        Progress_photo_recognition.tolerance = tolerance
         sql = "SELECT full_name FROM public.students WHERE group_id = (SELECT id FROM public.groups WHERE name = '" + file1 + "');"
         names = pg.select(info, sql)
         for name in names:
@@ -64,11 +68,11 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
             number += 1
             unknown_image = face_recognition.load_image_file(file)
 
-            face_locations = face_recognition.face_locations(unknown_image)
+            face_locations = face_recognition.face_locations(unknown_image, model=Progress_photo_recognition.model)
             face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
 
             for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance= Progress_photo_recognition.tolerance)
                 name = "Unknown"
 
                 face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
