@@ -60,10 +60,3 @@ class DB_menu(QtWidgets.QMainWindow):
         self.open_report = reportw.DB_report(DB_menu.DB_menu_info,int(instructor_id),int(group_id),int(subject_id),int(type_id))
         self.open_report.show()
         self.close()
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = DB_menu()
-    application.show()
-
-    sys.exit(app.exec())
