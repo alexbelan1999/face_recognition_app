@@ -24,11 +24,3 @@ class Info(QtWidgets.QMainWindow):
         self.open_menu = menu.Menu(Info.info_info)
         self.open_menu.show()
         self.close()
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Info()
-    application.show()
-
-    sys.exit(app.exec())
