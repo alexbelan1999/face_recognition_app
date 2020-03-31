@@ -1,12 +1,10 @@
-import sys
-
 from PyQt5 import QtWidgets
 
-import windows.login_window as login
-import windows.info_window as info
-import windows.training_window as training
-import windows.recognition_window as recognition
 import windows.db_menu_window as db
+import windows.info_window as info
+import windows.login_window as login
+import windows.recognition_window as recognition
+import windows.training_window as training
 from ui.menu import Ui_Menu
 
 
@@ -18,6 +16,7 @@ class Menu(QtWidgets.QMainWindow):
         self.ui = Ui_Menu()
         self.ui.setupUi(self)
         Menu.menu_info = info
+
         self.ui.pushButton_info.clicked.connect(self.start_info)
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
@@ -49,11 +48,3 @@ class Menu(QtWidgets.QMainWindow):
         self.open_db = db.DB_menu(Menu.menu_info)
         self.open_db.show()
         self.close()
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Menu()
-    application.show()
-
-    sys.exit(app.exec())
