@@ -1,5 +1,3 @@
-import sys
-
 import cv2
 import face_recognition
 import numpy as np
@@ -17,15 +15,21 @@ class Progress_video_recognition(QtWidgets.QMainWindow):
     video = ""
     progress_video_info = []
     seconds = 1.0
+    model = ""
+    tolerance = 0.6
 
-    def __init__(self, info=["", "", "", ""], file="", video="", seconds=1.0):
+    def __init__(self, info=["", "", "", ""], file="", video="", seconds=1.0, model="", tolerance=0.6):
         super(Progress_video_recognition, self).__init__()
         self.ui = Ui_Progress_video_recognition()
         self.ui.setupUi(self)
+
         Progress_video_recognition.progress_video_info = info
         Progress_video_recognition.file = file
         Progress_video_recognition.video = video
         Progress_video_recognition.seconds = seconds
+        Progress_video_recognition.model = model
+        Progress_video_recognition.tolerance = tolerance
+
         self.ui.progressBar.setValue(0)
         sql = "SELECT full_name FROM public.students WHERE group_id = (SELECT id FROM public.groups WHERE name = '" + file + "');"
         names = pg.select(info, sql)
@@ -51,12 +55,11 @@ class Progress_video_recognition(QtWidgets.QMainWindow):
         self.progress()
 
     def progress(self):
-        print(Progress_video_recognition.video, " ", Progress_video_recognition.file, " ",
-              Progress_video_recognition.seconds)
         input_movie = cv2.VideoCapture(Progress_video_recognition.video)
         length = int(input_movie.get(cv2.CAP_PROP_FRAME_COUNT))
         known_face_encodings = dalp.load(Progress_video_recognition.file, 0)
         known_face_names = dalp.load(Progress_video_recognition.file + "names", 1)
+
         frame_number = 0
         seconds = Progress_video_recognition.seconds
         fps = input_movie.get(cv2.CAP_PROP_FPS)
@@ -75,11 +78,12 @@ class Progress_video_recognition(QtWidgets.QMainWindow):
             if frame_number % multiplier == 0:
                 rgb_frame = frame[:, :, ::-1]
 
-                face_locations = face_recognition.face_locations(rgb_frame)
+                face_locations = face_recognition.face_locations(rgb_frame, model=Progress_video_recognition.model)
                 face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
 
                 for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-                    matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                    matches = face_recognition.compare_faces(known_face_encodings, face_encoding,
+                                                             tolerance=Progress_video_recognition.tolerance)
                     name = "Unknown"
 
                     face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
@@ -104,11 +108,3 @@ class Progress_video_recognition(QtWidgets.QMainWindow):
     def add(self):
         person = self.ui.comboBox.currentText()
         self.ui.textEdit.append(person)
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Progress_video_recognition()
-    application.show()
-
-    sys.exit(app.exec())
