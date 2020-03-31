@@ -22,12 +22,17 @@ class Web_camera(QtWidgets.QMainWindow):
         super(Web_camera, self).__init__()
         self.ui = Ui_Web_camera()
         self.ui.setupUi(self)
+
         Web_camera.web_camera_info = info
         path = "../pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
+
         self.ui.radioButton1.setChecked(True)
+        self.ui.radioButton3.setChecked(True)
+        self.ui.lineEdit_tolerance.setText("0.6")
+
         self.ui.pushButton_start.clicked.connect(self.camera)
         self.ui.pushButton_stop.clicked.connect(self.stop_rec)
         self.ui.pushButton_exit.clicked.connect(self.close)
@@ -38,7 +43,17 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.pushButton_exit.setDisabled(True)
         self.ui.pushButton_menu.setDisabled(True)
         self.ui.pushButton_report.setDisabled(True)
+
         file = self.ui.comboBox.currentText()
+
+        tolerance = float(self.ui.lineEdit_tolerance.text())
+
+        model = ""
+        if self.ui.radioButton1.isChecked():
+            model = "hog"
+        else:
+            model = "cnn"
+
         known_face_encodings = dalp.load(file, 0)
         known_face_names = dalp.load(file + "names", 1)
         video_capture_number = 0
@@ -56,10 +71,10 @@ class Web_camera(QtWidgets.QMainWindow):
 
             rgb_frame = frame[:, :, ::-1]
 
-            face_locations = face_recognition.face_locations(rgb_frame)
+            face_locations = face_recognition.face_locations(rgb_frame, model=model)
             face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
             for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=tolerance)
                 name = "Unknown"
 
                 face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
@@ -97,7 +112,6 @@ class Web_camera(QtWidgets.QMainWindow):
     def report(self):
         report = self.ui.textEdit.toPlainText()
         report = list(report.split('\n'))
-        print(report)
         file = self.ui.comboBox.currentText()
         self.open_report = reportw.Report(Web_camera.web_camera_info, report, file)
         self.open_report.show()
