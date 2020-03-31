@@ -13,7 +13,7 @@ class Ui_DB_report(object):
 
         self.centralwidget = QtWidgets.QWidget(DB_report)
         self.centralwidget.setObjectName("centralwidget")
-        
+
         self.label_instructor1 = QtWidgets.QLabel(self.centralwidget)
         self.label_instructor1.setGeometry(QtCore.QRect(50, 20, 130, 30))
         self.label_instructor1.setFont(font)

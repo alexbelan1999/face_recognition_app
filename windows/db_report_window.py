@@ -1,5 +1,3 @@
-import sys
-
 from PyQt5 import QtWidgets, QtGui
 
 import postgresql as pg
@@ -28,34 +26,32 @@ class DB_report(QtWidgets.QMainWindow):
 
         sql3 = "SELECT id, full_name FROM public.students where group_id = " + str(group_id) + "ORDER BY full_name;"
         students1 = pg.select(info, sql3)
-        print(students1)
+
         names = []
         for st in students1:
             names.append(st[1])
-        print(names)
+
         sql4 = "SELECT student_id, classes_id, class_date FROM public.attendance where instructor_id = " + str(
             instructor_id) + " and subject_id = " + str(subject_id) + " and class_type_id = " + str(type_id) + ";"
         attendance = pg.select(info, sql4)
-        print(attendance)
 
         sql5 = "SELECT classes_id, class_date FROM public.attendance where instructor_id = " + str(
             instructor_id) + " and subject_id = " + str(subject_id) + " and class_type_id = " + str(type_id) + ";"
+
         date_class = pg.select(info, sql5)
         date_class1 = []
         date_class2 = []
+
         for date in date_class:
             date_class1.append([date[0], str(date[1])])
-        print(date_class1[0])
+
         for date1 in date_class1:
             if date1 not in date_class2:
                 date_class2.append(date1)
-        print(date_class2)
 
         date_class3 = []
         for date_c in date_class2:
-            date_class3.append(date_c[1] + " пара "+ str(date_c[0]))
-
-        print(date_class3)
+            date_class3.append(date_c[1] + " пара " + str(date_c[0]))
 
         model = QtGui.QStandardItemModel()
         result = []
@@ -67,7 +63,6 @@ class DB_report(QtWidgets.QMainWindow):
                         item = QtGui.QStandardItem("+")
                         res.append(item)
             result.append(res)
-        print(result)
 
         for row in result:
             model.appendRow(row)
@@ -76,7 +71,7 @@ class DB_report(QtWidgets.QMainWindow):
         model.setVerticalHeaderLabels(names)
 
         self.ui.tableView.setModel(model)
-        for i in range(0,model.columnCount()):
+        for i in range(0, model.columnCount()):
             self.ui.tableView.setColumnWidth(i, 150)
 
         self.ui.pushButton_exit.clicked.connect(self.close)
@@ -86,11 +81,3 @@ class DB_report(QtWidgets.QMainWindow):
         self.open_menu = menu.DB_menu(DB_report.DB_report_info)
         self.open_menu.show()
         self.close()
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = DB_report()
-    application.show()
-
-    sys.exit(app.exec())
