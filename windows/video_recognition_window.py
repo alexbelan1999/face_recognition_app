@@ -31,6 +31,14 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_next.clicked.connect(self.next)
         self.ui.pushButton_file.clicked.connect(self.open_file)
+        self.ui.pushButton_next.setDisabled(True)
+        self.ui.lineEdit_tolerance.textChanged.connect(self.disableButton)
+        self.ui.lineEdit_file.textChanged.connect(self.disableButton)
+        self.ui.lineEdit_seconds.textChanged.connect(self.disableButton)
+
+    def disableButton(self):
+        if len(self.ui.lineEdit_tolerance.text()) > 0 and len(self.ui.lineEdit_file.text()) > 0 and len(self.ui.lineEdit_seconds.text()) > 0:
+            self.ui.pushButton_next.setDisabled(False)
 
     def back(self):
         self.open_recognition = recognition.Recognition(Video_recognition.video_recognition_info)
