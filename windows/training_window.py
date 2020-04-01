@@ -21,6 +21,13 @@ class Training(QtWidgets.QMainWindow):
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_next.clicked.connect(self.next)
         self.ui.pushButton_dir.clicked.connect(self.open_dir)
+        self.ui.pushButton_next.setDisabled(True)
+        self.ui.lineEdit_file.textChanged.connect(self.disableButton)
+        self.ui.lineEdit_dir.textChanged.connect(self.disableButton)
+
+    def disableButton(self):
+        if len(self.ui.lineEdit_file.text()) > 0 and len(self.ui.lineEdit_dir.text()) > 0:
+            self.ui.pushButton_next.setDisabled(False)
 
     def back(self):
         self.open_menu = menu.Menu(Training.training_info)

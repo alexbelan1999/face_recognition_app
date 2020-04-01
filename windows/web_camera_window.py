@@ -1,6 +1,5 @@
 import glob
 import os
-import sys
 
 import cv2
 import face_recognition
@@ -116,11 +115,3 @@ class Web_camera(QtWidgets.QMainWindow):
         self.open_report = reportw.Report(Web_camera.web_camera_info, report, file)
         self.open_report.show()
         self.close()
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Web_camera()
-    application.show()
-
-    sys.exit(app.exec())

@@ -1,6 +1,5 @@
 import glob
 import os
-import sys
 
 import face_recognition
 from PyQt5 import QtWidgets
@@ -55,11 +54,3 @@ class Progress_training(QtWidgets.QMainWindow):
         if number == files:
             self.ui.pushButton_exit.setDisabled(False)
             self.ui.pushButton_menu.setDisabled(False)
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication([])
-    application = Progress_training()
-    application.show()
-
-    sys.exit(app.exec())
