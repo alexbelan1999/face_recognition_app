@@ -13,7 +13,7 @@ class Video_recognition(QtWidgets.QMainWindow):
     file = ""
     video = ""
     video_recognition_info = []
-    seconds = 0.0
+    seconds = 1.0
 
     def __init__(self, info=["", "", "", ""]):
         super(Video_recognition, self).__init__()
@@ -63,5 +63,5 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.close()
 
     def open_file(self):
-        video = QFileDialog.getOpenFileName(self, 'Open file', "..", "*mp4 *avi")[0]
+        video = QFileDialog.getOpenFileName(self, 'Open file', ".", "*mp4 *avi")[0]
         self.ui.lineEdit_file.setText(video)

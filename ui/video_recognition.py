@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Video_recognition(object):
     def setupUi(self, Video_recognition):
         Video_recognition.setObjectName("Video_recognition")
-        Video_recognition.setFixedSize(520, 510)
+        Video_recognition.setFixedSize(520, 520)
         ico = QtGui.QIcon("mylogo.png")
         Video_recognition.setWindowIcon(ico)
         font = QtGui.QFont()

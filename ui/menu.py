@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Menu(object):
     def setupUi(self, Menu):
         Menu.setObjectName("Menu")
-        Menu.setFixedSize(390, 150)
+        Menu.setFixedSize(390, 160)
         ico = QtGui.QIcon("mylogo.png")
         Menu.setWindowIcon(ico)
         font = QtGui.QFont()

@@ -43,7 +43,7 @@ class Progress_video_recognition(QtWidgets.QMainWindow):
         self.ui.pushButton_add.clicked.connect(self.add)
 
     def back_menu(self):
-        self.open_menu = menu.Menu(Progress_video_recognition.progress_recognition_info)
+        self.open_menu = menu.Menu(Progress_video_recognition.progress_video_info)
         self.open_menu.show()
         self.close()
 

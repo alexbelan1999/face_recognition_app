@@ -48,7 +48,7 @@ class Web_camera(QtWidgets.QMainWindow):
         tolerance = float(self.ui.lineEdit_tolerance.text())
 
         model = ""
-        if self.ui.radioButton1.isChecked():
+        if self.ui.radioButton3.isChecked():
             model = "hog"
         else:
             model = "cnn"
@@ -56,52 +56,31 @@ class Web_camera(QtWidgets.QMainWindow):
         known_face_encodings = dalp.load(file, 0)
         known_face_names = dalp.load(file + "names", 1)
         video_capture_number = 0
-        if self.ui.radioButton1.isChecked():
-            video_capture_number = 0
-        else:
-            video_capture_number = 1
-        video_capture = cv2.VideoCapture(video_capture_number)
+
+        # if self.ui.radioButton1.isChecked():
+        #     video_capture_number = 0
+        # else:
+        #     video_capture_number = 2
+        # print(video_capture_number)
+        # print(model)
+        # video_capture = cv2.VideoCapture(video_capture_number)
+        # print(video_capture.isOpened())
         Web_camera.stop = False
         names = set()
+        frame_number = 0
         while True:
-
-            ret, frame = video_capture.read()
-            frame = cv2.flip(frame, 1)
-
-            rgb_frame = frame[:, :, ::-1]
-
-            face_locations = face_recognition.face_locations(rgb_frame, model=model)
-            face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
-            for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=tolerance)
-                name = "Unknown"
-
-                face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
-                best_match_index = np.argmin(face_distances)
-                if matches[best_match_index]:
-                    name = known_face_names[best_match_index]
-                if (name not in names) and (name != "Unknown"):
-                    self.ui.textEdit.append(name)
-                    names.add(name)
-
-                cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 3)
-
-            cvtFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            img = QImage(cvtFrame, cvtFrame.shape[1], cvtFrame.shape[0], QImage.Format_RGB888)
-            pix = QPixmap.fromImage(img)
-            self.ui.label_video.setPixmap(pix)
-
-            key = cv2.waitKey(100)
             if Web_camera.stop:
+                print("Stop")
                 break
-
-        video_capture.release()
+            frame_number += 1
+            print(frame_number)
+            #self.ui.label_video.setText(str(frame_number))
 
     def stop_rec(self):
+        Web_camera.stop = True
         self.ui.pushButton_exit.setDisabled(False)
         self.ui.pushButton_menu.setDisabled(False)
         self.ui.pushButton_report.setDisabled(False)
-        Web_camera.stop = True
 
     def back_menu(self):
         self.open_menu = menu.Menu(Web_camera.web_camera_info)

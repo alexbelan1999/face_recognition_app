@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Photo_recognition(object):
     def setupUi(self, Photo_recognition):
         Photo_recognition.setObjectName("Photo_recognition")
-        Photo_recognition.setFixedSize(520, 430)
+        Photo_recognition.setFixedSize(520, 440)
         ico = QtGui.QIcon("mylogo.png")
         Photo_recognition.setWindowIcon(ico)
         font = QtGui.QFont()

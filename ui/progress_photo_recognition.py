@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Progress_photo_recognition(object):
     def setupUi(self, Progress_photo_recognition):
         Progress_photo_recognition.setObjectName("Progress_photo_recognition")
-        Progress_photo_recognition.setFixedSize(350, 470)
+        Progress_photo_recognition.setFixedSize(350, 480)
         ico = QtGui.QIcon("mylogo.png")
         Progress_photo_recognition.setWindowIcon(ico)
         font = QtGui.QFont()

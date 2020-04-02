@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Progress_training(object):
     def setupUi(self, Progress_training):
         Progress_training.setObjectName("Progress_training")
-        Progress_training.setFixedSize(360, 190)
+        Progress_training.setFixedSize(360, 200)
         ico = QtGui.QIcon("mylogo.png")
         Progress_training.setWindowIcon(ico)
         font = QtGui.QFont()

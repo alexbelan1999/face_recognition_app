@@ -63,5 +63,5 @@ class Photo_recognition(QtWidgets.QMainWindow):
         self.close()
 
     def open_dir(self):
-        dir = QFileDialog.getExistingDirectory(self, 'Open dir', '..')
+        dir = QFileDialog.getExistingDirectory(self, 'Open dir', '.')
         self.ui.lineEdit_dir.setText(dir)

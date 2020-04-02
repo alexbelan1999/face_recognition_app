@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Web_camera(object):
     def setupUi(self, Web_camera):
         Web_camera.setObjectName("Web_camera")
-        Web_camera.setFixedSize(1050, 700)
+        Web_camera.setFixedSize(1050, 710)
         ico = QtGui.QIcon("mylogo.png")
         Web_camera.setWindowIcon(ico)
         font = QtGui.QFont()
@@ -36,7 +36,7 @@ class Ui_Web_camera(object):
 
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(509, 59, 202, 31))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(509, 59, 202, 38))
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName("horizontalLayout")
 
@@ -54,7 +54,7 @@ class Ui_Web_camera(object):
 
         self.horizontalLayoutWidget1 = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget1.setObjectName("horizontalLayoutWidget1")
-        self.horizontalLayoutWidget1.setGeometry(QtCore.QRect(719, 59, 290, 38))
+        self.horizontalLayoutWidget1.setGeometry(QtCore.QRect(719, 59, 295, 38))
         self.horizontalLayout1 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget1)
         self.horizontalLayout1.setObjectName("horizontalLayout1")
 
