@@ -45,7 +45,7 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
         self.ui.pushButton_add.clicked.connect(self.add)
 
     def back_menu(self):
-        self.open_menu = menu.Menu(Progress_photo_recognition.progress_recognition_info)
+        self.open_menu = menu.Menu(Progress_photo_recognition.progress_photo_info)
         self.open_menu.show()
         self.close()
 

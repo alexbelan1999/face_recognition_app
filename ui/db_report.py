@@ -5,7 +5,7 @@ class Ui_DB_report(object):
     def setupUi(self, DB_report):
         DB_report.setObjectName("Camera")
         DB_report.setFixedSize(800, 560)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         DB_report.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

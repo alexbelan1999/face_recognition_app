@@ -5,7 +5,7 @@ class Ui_Web_camera(object):
     def setupUi(self, Web_camera):
         Web_camera.setObjectName("Web_camera")
         Web_camera.setFixedSize(1050, 700)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         Web_camera.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

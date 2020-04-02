@@ -21,7 +21,7 @@ class Photo_recognition(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         Photo_recognition.photo_recognition_info = info
 
-        path = "../pickle/encodings/*"
+        path = "./pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
@@ -56,6 +56,7 @@ class Photo_recognition(QtWidgets.QMainWindow):
             model = "hog"
         else:
             model = "cnn"
+
         self.open_progressrec = progress.Progress_photo_recognition(Photo_recognition.photo_recognition_info,
                                                                     Photo_recognition.file1, Photo_recognition.file2,
                                                                     Photo_recognition.dir, model, tolerance)
@@ -63,5 +64,5 @@ class Photo_recognition(QtWidgets.QMainWindow):
         self.close()
 
     def open_dir(self):
-        dir = QFileDialog.getExistingDirectory(self, 'Open dir', '..')
+        dir = QFileDialog.getExistingDirectory(self, 'Open dir', '.')
         self.ui.lineEdit_dir.setText(dir)

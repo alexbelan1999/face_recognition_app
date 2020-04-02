@@ -5,7 +5,7 @@ class Ui_Training(object):
     def setupUi(self, Training):
         Training.setObjectName("Training")
         Training.setFixedSize(510, 270)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         Training.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

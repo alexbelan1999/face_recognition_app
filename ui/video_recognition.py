@@ -5,7 +5,7 @@ class Ui_Video_recognition(object):
     def setupUi(self, Video_recognition):
         Video_recognition.setObjectName("Video_recognition")
         Video_recognition.setFixedSize(520, 510)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         Video_recognition.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

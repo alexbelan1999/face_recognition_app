@@ -5,7 +5,7 @@ class Ui_DB_menu(object):
     def setupUi(self, DB_menu):
         DB_menu.setObjectName("DB_menu")
         DB_menu.setFixedSize(450, 230)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         DB_menu.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

@@ -7,7 +7,7 @@ class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")
         Login.setFixedSize(300, 470)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         Login.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

@@ -5,7 +5,7 @@ class Ui_Progress_training(object):
     def setupUi(self, Progress_training):
         Progress_training.setObjectName("Progress_training")
         Progress_training.setFixedSize(360, 190)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         Progress_training.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

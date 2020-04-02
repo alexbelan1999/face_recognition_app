@@ -5,7 +5,7 @@ class Ui_Photo_recognition(object):
     def setupUi(self, Photo_recognition):
         Photo_recognition.setObjectName("Photo_recognition")
         Photo_recognition.setFixedSize(520, 430)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = QtGui.QIcon("../python_icon.ico")
         Photo_recognition.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

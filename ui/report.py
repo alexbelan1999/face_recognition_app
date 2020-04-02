@@ -4,8 +4,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Report(object):
     def setupUi(self, Report):
         Report.setObjectName("Report")
-        Report.setFixedSize(500, 590)
-        ico = QtGui.QIcon("mylogo.png")
+        Report.setFixedSize(500, 630)
+        ico = QtGui.QIcon("../python_icon.ico")
         Report.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
@@ -78,6 +78,11 @@ class Ui_Report(object):
         self.pushButton_exit.setGeometry(QtCore.QRect(330, 540, 120, 30))
         self.pushButton_exit.setFont(font)
         self.pushButton_exit.setObjectName("pushButton_exit")
+
+        self.label_check = QtWidgets.QLabel(self.centralwidget)
+        self.label_check.setGeometry(QtCore.QRect(50, 580, 120, 30))
+        self.label_check.setFont(font)
+        self.label_check.setObjectName("label_check")
 
         Report.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Report)

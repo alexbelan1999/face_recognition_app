@@ -76,7 +76,6 @@ class Report(QtWidgets.QMainWindow):
     def send(self):
         report = self.ui.textEdit.toPlainText()
         report = list(report.split('\n'))
-        print(report)
         student_id = []
         for rep in report:
             student_id.append(Report.students1.get(rep))
@@ -92,4 +91,9 @@ class Report(QtWidgets.QMainWindow):
         for i in student_id:
             students.append([i, instructor_id, subject_id, type_id, class_id, class_date])
 
-        pg.insert(Report.report_info, students)
+        check = pg.insert(Report.report_info, students)
+
+        if check:
+            self.ui.label_check.setText("OK!")
+        else:
+            self.ui.label_check.setText("ERROR!")

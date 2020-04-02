@@ -20,7 +20,7 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.ui = Ui_Video_recognition()
         self.ui.setupUi(self)
         Video_recognition.video_recognition_info = info
-        path = "../pickle/encodings/*"
+        path = "./pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
@@ -37,7 +37,8 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.ui.lineEdit_seconds.textChanged.connect(self.disableButton)
 
     def disableButton(self):
-        if len(self.ui.lineEdit_tolerance.text()) > 0 and len(self.ui.lineEdit_file.text()) > 0 and len(self.ui.lineEdit_seconds.text()) > 0:
+        if len(self.ui.lineEdit_tolerance.text()) > 0 and len(self.ui.lineEdit_file.text()) > 0 and len(
+                self.ui.lineEdit_seconds.text()) > 0:
             self.ui.pushButton_next.setDisabled(False)
 
     def back(self):
@@ -56,6 +57,7 @@ class Video_recognition(QtWidgets.QMainWindow):
             model = "hog"
         else:
             model = "cnn"
+
         self.open_progressrec1 = progressv.Progress_video_recognition(Video_recognition.video_recognition_info,
                                                                       Video_recognition.file, Video_recognition.video,
                                                                       Video_recognition.seconds, model, tolerance)
@@ -63,5 +65,5 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.close()
 
     def open_file(self):
-        video = QFileDialog.getOpenFileName(self, 'Open file', "..", "*mp4 *avi")[0]
+        video = QFileDialog.getOpenFileName(self, 'Open file', ".", "*mp4 *avi")[0]
         self.ui.lineEdit_file.setText(video)

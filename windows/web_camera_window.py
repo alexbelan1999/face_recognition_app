@@ -23,7 +23,7 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         Web_camera.web_camera_info = info
-        path = "../pickle/encodings/*"
+        path = "./pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
@@ -48,7 +48,7 @@ class Web_camera(QtWidgets.QMainWindow):
         tolerance = float(self.ui.lineEdit_tolerance.text())
 
         model = ""
-        if self.ui.radioButton1.isChecked():
+        if self.ui.radioButton3.isChecked():
             model = "hog"
         else:
             model = "cnn"
@@ -56,10 +56,12 @@ class Web_camera(QtWidgets.QMainWindow):
         known_face_encodings = dalp.load(file, 0)
         known_face_names = dalp.load(file + "names", 1)
         video_capture_number = 0
+
         if self.ui.radioButton1.isChecked():
             video_capture_number = 0
         else:
             video_capture_number = 1
+
         video_capture = cv2.VideoCapture(video_capture_number)
         Web_camera.stop = False
         names = set()
