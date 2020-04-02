@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import ui.load_icon as li
 
 class Ui_Progress_video_recognition(object):
     def setupUi(self, Progress_video_recognition):
         Progress_video_recognition.setObjectName("Progress_video_recognition")
         Progress_video_recognition.setFixedSize(350, 470)
-        ico = QtGui.QIcon("../python_icon.ico")
+        ico = li.load()
         Progress_video_recognition.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

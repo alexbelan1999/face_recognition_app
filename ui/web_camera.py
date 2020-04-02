@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import ui.load_icon as li
 
 class Ui_Web_camera(object):
     def setupUi(self, Web_camera):
         Web_camera.setObjectName("Web_camera")
         Web_camera.setFixedSize(1050, 700)
-        ico = QtGui.QIcon("../python_icon.ico")
+        ico = li.load()
         Web_camera.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

@@ -6,8 +6,11 @@ block_cipher = None
 a = Analysis(['windows\\login_window.py'],
              pathex=['C:\\Users\\Alex\\PycharmProjects\\face_recognition_app'],
              binaries=[],
-             datas = [('C:\\Users\\Alex\\PycharmProjects\\face_recognition_app\\venv\\Lib\\site-packages\\face_recognition_models','face_recognition_models'),
-             ('python_icon.ico','python_icon.ico')],
+             datas = [
+             ('C:\\Users\\Alex\\PycharmProjects\\face_recognition_app\\venv\\Lib\\site-packages\\face_recognition_models','face_recognition_models'),
+             ('C:\\Users\\Alex\\PycharmProjects\\face_recognition_app\\venv\\Lib\\site-packages\\face_recognition','face_recognition'),
+             ('icon\\python_icon.ico','icon')
+             ],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],

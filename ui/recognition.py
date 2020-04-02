@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import ui.load_icon as li
 
 class Ui_Recognition(object):
     def setupUi(self, Recognition):
         Recognition.setObjectName("Recognition")
         Recognition.setFixedSize(450, 200)
-        ico = QtGui.QIcon("../python_icon.ico")
+        ico = li.load()
         Recognition.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

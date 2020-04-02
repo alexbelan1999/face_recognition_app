@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import ui.load_icon as li
 
 class Ui_DB_menu(object):
     def setupUi(self, DB_menu):
         DB_menu.setObjectName("DB_menu")
         DB_menu.setFixedSize(450, 230)
-        ico = QtGui.QIcon("../python_icon.ico")
+        ico = li.load()
         DB_menu.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

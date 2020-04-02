@@ -1,11 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import ui.load_icon as li
 
 class Ui_Report(object):
     def setupUi(self, Report):
         Report.setObjectName("Report")
         Report.setFixedSize(500, 630)
-        ico = QtGui.QIcon("../python_icon.ico")
+        ico = li.load()
         Report.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
