@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_DB_report(object):
     def setupUi(self, DB_report):
         DB_report.setObjectName("Camera")
-        DB_report.setFixedSize(800, 560)
+        DB_report.setFixedSize(800, 570)
         ico = QtGui.QIcon("mylogo.png")
         DB_report.setWindowIcon(ico)
         font = QtGui.QFont()

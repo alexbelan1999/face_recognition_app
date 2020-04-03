@@ -6,7 +6,7 @@ import face_recognition
 import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QPixmap, QImage
-
+from threading import Thread
 import dump_and_load_pickle as dalp
 import windows.menu_window as menu
 import windows.report_window as reportw
@@ -14,7 +14,7 @@ from ui.web_camera import Ui_Web_camera
 
 
 class Web_camera(QtWidgets.QMainWindow):
-    stop = False
+    stop_web_camera = False
     web_camera_info = []
 
     def __init__(self, info=["", "", "", ""]):
@@ -32,30 +32,36 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.radioButton3.setChecked(True)
         self.ui.lineEdit_tolerance.setText("0.6")
 
-        self.ui.pushButton_start.clicked.connect(self.camera)
+        self.ui.pushButton_start.clicked.connect(self.start_rec)
         self.ui.pushButton_stop.clicked.connect(self.stop_rec)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_menu.clicked.connect(self.back_menu)
         self.ui.pushButton_report.clicked.connect(self.report)
 
-    def camera(self):
+    def start_rec(self):
         self.ui.pushButton_exit.setDisabled(True)
         self.ui.pushButton_menu.setDisabled(True)
         self.ui.pushButton_report.setDisabled(True)
+        Web_camera.stop_web_camera = False
+        print(Web_camera.stop_web_camera)
+        t = Thread(target=self.camera, args=(Web_camera.stop_web_camera,))
+        t.start()
+        t.join()
 
-        file = self.ui.comboBox.currentText()
-
-        tolerance = float(self.ui.lineEdit_tolerance.text())
-
-        model = ""
-        if self.ui.radioButton3.isChecked():
-            model = "hog"
-        else:
-            model = "cnn"
-
-        known_face_encodings = dalp.load(file, 0)
-        known_face_names = dalp.load(file + "names", 1)
-        video_capture_number = 0
+    def camera(self, stop):
+        # file = self.ui.comboBox.currentText()
+        #
+        # tolerance = float(self.ui.lineEdit_tolerance.text())
+        #
+        # model = ""
+        # if self.ui.radioButton3.isChecked():
+        #     model = "hog"
+        # else:
+        #     model = "cnn"
+        #
+        # known_face_encodings = dalp.load(file, 0)
+        # known_face_names = dalp.load(file + "names", 1)
+        # video_capture_number = 0
 
         # if self.ui.radioButton1.isChecked():
         #     video_capture_number = 0
@@ -65,11 +71,11 @@ class Web_camera(QtWidgets.QMainWindow):
         # print(model)
         # video_capture = cv2.VideoCapture(video_capture_number)
         # print(video_capture.isOpened())
-        Web_camera.stop = False
-        names = set()
+        #Web_camera.stop = False
+        #names = set()
         frame_number = 0
         while True:
-            if Web_camera.stop:
+            if stop:
                 print("Stop")
                 break
             frame_number += 1
@@ -77,10 +83,12 @@ class Web_camera(QtWidgets.QMainWindow):
             #self.ui.label_video.setText(str(frame_number))
 
     def stop_rec(self):
-        Web_camera.stop = True
+
         self.ui.pushButton_exit.setDisabled(False)
         self.ui.pushButton_menu.setDisabled(False)
         self.ui.pushButton_report.setDisabled(False)
+        Web_camera.stop_web_camera = True
+        print(Web_camera.stop_web_camera)
 
     def back_menu(self):
         self.open_menu = menu.Menu(Web_camera.web_camera_info)

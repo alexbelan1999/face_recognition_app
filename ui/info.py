@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Info(object):
     def setupUi(self, Info):
         Info.setObjectName("Info")
-        Info.setFixedSize(300, 390)
+        Info.setFixedSize(300, 400)
         ico = QtGui.QIcon("mylogo.png")
         Info.setWindowIcon(ico)
         font = QtGui.QFont()
