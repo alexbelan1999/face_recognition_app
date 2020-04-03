@@ -7,7 +7,6 @@ import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QThread
 from PyQt5.QtGui import QPixmap, QImage
-from threading import Thread
 import dump_and_load_pickle as dalp
 import windows.menu_window as menu
 import windows.report_window as reportw

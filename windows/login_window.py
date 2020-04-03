@@ -11,7 +11,7 @@ class Login(QtWidgets.QMainWindow):
         super(Login, self).__init__()
         self.ui = Ui_Login()
         self.ui.setupUi(self)
-        
+
         self.ui.pushButton_menu.setDisabled(True)
         self.ui.pushButton_menu.clicked.connect(self.start_menu)
         self.ui.pushButton_exit.clicked.connect(self.close)
