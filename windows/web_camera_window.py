@@ -5,7 +5,7 @@ import cv2
 import face_recognition
 import numpy as np
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import QThread
+from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QPixmap, QImage
 import dump_and_load_pickle as dalp
 import windows.menu_window as menu
@@ -14,6 +14,7 @@ from ui.web_camera import Ui_Web_camera
 
 
 class Web_camera_thread(QThread):
+    str_signal = pyqtSignal(str)
     def __init__(self, mainwindow, parent=None):
         super(Web_camera_thread, self).__init__()
         self.mainwindow = mainwindow
@@ -62,7 +63,8 @@ class Web_camera_thread(QThread):
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
                 if (name not in names) and (name != "Unknown"):
-                    self.ui.textEdit.append(name)
+                    self.str_signal.emit(name)
+                    #self.mainwindow.ui.textEdit.append(name)
                     names.add(name)
 
                 cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 3)
@@ -98,12 +100,16 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.radioButton3.setChecked(True)
         self.ui.lineEdit_tolerance.setText("0.6")
         self.web_camera_thread = Web_camera_thread(mainwindow=self)
+        self.web_camera_thread.str_signal.connect(self.add_text)
 
         self.ui.pushButton_start.clicked.connect(self.start_rec)
         self.ui.pushButton_stop.clicked.connect(self.stop_rec)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_menu.clicked.connect(self.back_menu)
         self.ui.pushButton_report.clicked.connect(self.report)
+
+    def add_text(self, name):
+        self.ui.textEdit.append(name)
 
     def start_rec(self):
         self.ui.pushButton_exit.setDisabled(True)

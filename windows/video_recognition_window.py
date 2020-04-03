@@ -37,7 +37,8 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.ui.lineEdit_seconds.textChanged.connect(self.disableButton)
 
     def disableButton(self):
-        if len(self.ui.lineEdit_tolerance.text()) > 0 and len(self.ui.lineEdit_file.text()) > 0 and len(self.ui.lineEdit_seconds.text()) > 0:
+        if len(self.ui.lineEdit_tolerance.text()) > 0 and len(self.ui.lineEdit_file.text()) > 0 and len(
+                self.ui.lineEdit_seconds.text()) > 0:
             self.ui.pushButton_next.setDisabled(False)
 
     def back(self):

@@ -9,6 +9,7 @@ import windows.menu_window as menu
 from ui.progress_training import Ui_Progress_training
 from PyQt5.QtCore import QThread
 
+
 class Progress_training_thread(QThread):
     def __init__(self, mainwindow, parent=None):
         super(Progress_training_thread, self).__init__()
@@ -62,5 +63,3 @@ class Progress_training(QtWidgets.QMainWindow):
         self.ui.pushButton_exit.setDisabled(True)
         self.ui.pushButton_menu.setDisabled(True)
         self.progress_training_thread.start()
-
-
