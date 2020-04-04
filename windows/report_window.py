@@ -17,6 +17,7 @@ class Report(QtWidgets.QMainWindow):
     instructor = []
     number_class = 0
     date1 = None
+    group_id = 0
 
     def __init__(self, info=["", "", "", ""], report=[], file=""):
         super(Report, self).__init__()
@@ -28,32 +29,35 @@ class Report(QtWidgets.QMainWindow):
 
         sql1 = "SELECT id, full_name FROM public.instructor where login = '" + Report.report_info[1] + "';"
         Report.instructor = pg.select(info, sql1)
-
         self.ui.label_instructor2.setText(Report.instructor[0][1])
+
+        sql2 = "SELECT id FROM public.groups WHERE name = '" + Report.file + "';"
+        Report.group_id = pg.select(info,sql2)[0][0]
+
 
         for person in report:
             self.ui.textEdit.append(person)
         self.ui.textEdit.setReadOnly(True)
 
-        sql2 = "SELECT id, full_name FROM public.students where group_id = (SELECT id FROM public.groups WHERE name = '" + Report.file + "');"
-        students2 = pg.select(info, sql2)
+        sql3 = "SELECT id, full_name FROM public.students where group_id = " + str(Report.group_id) + ";"
+        students2 = pg.select(info, sql3)
         for student in students2:
             Report.students1[student[1]] = student[0]
 
-        sql3 = "SELECT id, name FROM public.subject;"
-        subject2 = pg.select(info, sql3)
+        sql4 = "SELECT id, name FROM public.subject;"
+        subject2 = pg.select(info, sql4)
         for subject in subject2:
             self.ui.comboBox_subject.addItem(subject[1])
             Report.subject1[subject[1]] = subject[0]
 
-        sql4 = "SELECT id, name FROM public.class_type;"
-        class_type2 = pg.select(info, sql4)
+        sql5 = "SELECT id, name FROM public.class_type;"
+        class_type2 = pg.select(info, sql5)
         for class_type in class_type2:
             self.ui.comboBox_type.addItem(class_type[1])
             Report.class_type1[class_type[1]] = class_type[0]
 
-        sql5 = "SELECT id, start_time, end_time FROM public.classes;"
-        time_class = pg.select(info, sql5)
+        sql6 = "SELECT id, start_time, end_time FROM public.classes;"
+        time_class = pg.select(info, sql6)
         time1 = datetime.datetime.now().strftime("%H:%M:%S")
 
         for time_c in time_class:
@@ -86,7 +90,8 @@ class Report(QtWidgets.QMainWindow):
 
         class_id = Report.number_class
         class_date = Report.date1
-        event = [instructor_id, subject_id, type_id, class_id, class_date]
+        group_id = Report.group_id
+        event = [instructor_id, subject_id, type_id, class_id, class_date, group_id]
 
         check = pg.insert(Report.report_info, event, student_id)
 
