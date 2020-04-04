@@ -1,16 +1,19 @@
 import psycopg2
 
 
-def insert(info: list, students: list):
+def insert(info: list, event: list, student_id: list):
     exit = True
     try:
         connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3])
         with connection.cursor() as cursor:
-            for student in students:
-                sql = "INSERT INTO public.attendance(student_id, instructor_id, subject_id, class_type_id, classes_id, class_date) VALUES (" + \
-                      str(student[0]) + "," + str(student[1]) + "," + str(student[2]) + "," + str(
-                    student[3]) + "," + str(student[4]) + ",'" + str(student[5]) + "');"
-                cursor.execute(sql)
+            sql1 = "INSERT INTO public.event(instructor_id, subject_id, class_type_id, classes_id, class_date) VALUES (" + str(
+                event[0]) + "," + str(event[1]) + "," + str(
+                event[2]) + "," + str(event[3]) + ",'" + str(event[4]) + "') RETURNING id;"
+            cursor.execute(sql1)
+            event_id = cursor.fetchone()[0]
+            for stud_id in student_id:
+                sql2 = "INSERT INTO public.attendance(event_id, student_id)	VALUES (" + str(event_id) + "," + str(stud_id) + ");"
+                cursor.execute(sql2)
             connection.commit()
             cursor.close()
 

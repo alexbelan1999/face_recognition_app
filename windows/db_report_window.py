@@ -34,6 +34,7 @@ class DB_report(QtWidgets.QMainWindow):
         sql4 = "SELECT student_id, classes_id, class_date FROM public.attendance where instructor_id = " + str(
             instructor_id) + " and subject_id = " + str(subject_id) + " and class_type_id = " + str(type_id) + ";"
         attendance = pg.select(info, sql4)
+        print(attendance)
 
         sql5 = "SELECT classes_id, class_date FROM public.attendance where instructor_id = " + str(
             instructor_id) + " and subject_id = " + str(subject_id) + " and class_type_id = " + str(type_id) + ";"
@@ -56,11 +57,19 @@ class DB_report(QtWidgets.QMainWindow):
         model = QtGui.QStandardItemModel()
         result = []
         for stud in students1:
+            print("Студент: ", stud)
             res = []
             for date in date_class2:
+                print("Дата: ", date)
                 for i in attendance:
+                    print(i[0],i[1],i[2])
                     if stud[0] == i[0] and date == [i[1], str(i[2])]:
+                        print("+")
                         item = QtGui.QStandardItem("+")
+                        res.append(item)
+                    elif stud[0] != i[0] and date == [i[1], str(i[2])]:
+                        print("--")
+                        item = QtGui.QStandardItem("--")
                         res.append(item)
             result.append(res)
 

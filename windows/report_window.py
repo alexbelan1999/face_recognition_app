@@ -86,12 +86,9 @@ class Report(QtWidgets.QMainWindow):
 
         class_id = Report.number_class
         class_date = Report.date1
+        event = [instructor_id, subject_id, type_id, class_id, class_date]
 
-        students = []
-        for i in student_id:
-            students.append([i, instructor_id, subject_id, type_id, class_id, class_date])
-
-        check = pg.insert(Report.report_info, students)
+        check = pg.insert(Report.report_info, event, student_id)
 
         if check:
             self.ui.label_check.setText("OK!")
