@@ -25,7 +25,7 @@ class Ui_Web_camera(object):
         self.label_camera.setObjectName("label_camera")
 
         self.label_model = QtWidgets.QLabel(self.centralwidget)
-        self.label_model.setGeometry(QtCore.QRect(720, 20, 250, 30))
+        self.label_model.setGeometry(QtCore.QRect(825, 20, 250, 30))
         self.label_model.setFont(font)
         self.label_model.setObjectName("label_model")
 
@@ -163,7 +163,7 @@ class Ui_Web_camera(object):
         self.radioButton2.setText(_translate("Web_camera", "Camera2"))
         self.radioButton3.setText(_translate("Web_camera", "Camera3"))
         self.label_tolerance.setText(_translate("Web_camera", "Точность (0-1):"))
-        self.label_model.setText(_translate("Web_camera", "Модель для распознования:"))
+        self.label_model.setText(_translate("Web_camera", "Модель для распознавания:"))
         self.radioButton4.setText(_translate("Web_camera", "hog (CPU)"))
         self.radioButton5.setText(_translate("Web_camera", "cnn (GPU/CUDA)"))
         self.pushButton_test.setText(_translate("Web_camera", "Тест камеры"))
