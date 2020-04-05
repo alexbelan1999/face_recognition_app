@@ -32,8 +32,7 @@ class Report(QtWidgets.QMainWindow):
         self.ui.label_instructor2.setText(Report.instructor[0][1])
 
         sql2 = "SELECT id FROM public.groups WHERE name = '" + Report.file + "';"
-        Report.group_id = pg.select(info,sql2)[0][0]
-
+        Report.group_id = pg.select(info, sql2)[0][0]
 
         for person in report:
             self.ui.textEdit.append(person)

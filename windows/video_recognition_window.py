@@ -20,13 +20,14 @@ class Video_recognition(QtWidgets.QMainWindow):
         self.ui = Ui_Video_recognition()
         self.ui.setupUi(self)
         Video_recognition.video_recognition_info = info
-        path = "../pickle/encodings/*"
+        path = "./pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
 
         self.ui.radioButton1.setChecked(True)
         self.ui.lineEdit_tolerance.setText("0.6")
+        self.ui.lineEdit_seconds.setText("1.0")
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_next.clicked.connect(self.next)

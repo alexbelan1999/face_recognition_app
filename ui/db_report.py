@@ -1,11 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ui.load_icon as li
 
 
 class Ui_DB_report(object):
     def setupUi(self, DB_report):
         DB_report.setObjectName("Camera")
         DB_report.setFixedSize(800, 650)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         DB_report.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

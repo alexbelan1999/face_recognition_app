@@ -1,13 +1,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import postgresql as pg
+import ui.load_icon as li
 
 
 class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")
         Login.setFixedSize(300, 480)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         Login.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

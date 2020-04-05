@@ -2,10 +2,6 @@ from PyQt5 import QtWidgets
 
 import windows.menu_window as menu
 from ui.info import Ui_Info
-from PyQt5 import QtWidgets
-
-import windows.menu_window as menu
-from ui.info import Ui_Info
 
 
 class Info(QtWidgets.QMainWindow):

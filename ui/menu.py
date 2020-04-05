@@ -1,11 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ui.load_icon as li
 
 
 class Ui_Menu(object):
     def setupUi(self, Menu):
         Menu.setObjectName("Menu")
         Menu.setFixedSize(390, 160)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         Menu.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

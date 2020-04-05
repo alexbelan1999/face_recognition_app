@@ -1,11 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ui.load_icon as li
 
 
 class Ui_Web_camera(object):
     def setupUi(self, Web_camera):
         Web_camera.setObjectName("Web_camera")
         Web_camera.setFixedSize(1165, 710)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         Web_camera.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
@@ -150,7 +151,7 @@ class Ui_Web_camera(object):
     def retranslateUi(self, Web_camera):
         _translate = QtCore.QCoreApplication.translate
         Web_camera.setWindowTitle(_translate("Web_camera", "Web_camera"))
-        self.label.setText(_translate("Web_camera", "Видео"))
+        self.label.setText(_translate("Web_camera", "Видео:"))
         self.label_video.setText(_translate("Web_camera", ""))
         self.pushButton_start.setText(_translate("Web_camera", "Старт"))
         self.pushButton_stop.setText(_translate("Web_camera", "Стоп"))

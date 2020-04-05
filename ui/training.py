@@ -1,11 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ui.load_icon as li
 
 
 class Ui_Training(object):
     def setupUi(self, Training):
         Training.setObjectName("Training")
         Training.setFixedSize(510, 280)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         Training.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")

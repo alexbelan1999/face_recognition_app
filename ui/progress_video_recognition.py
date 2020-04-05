@@ -1,11 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ui.load_icon as li
 
 
 class Ui_Progress_video_recognition(object):
     def setupUi(self, Progress_video_recognition):
         Progress_video_recognition.setObjectName("Progress_video_recognition")
         Progress_video_recognition.setFixedSize(350, 480)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         Progress_video_recognition.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
@@ -75,7 +76,7 @@ class Ui_Progress_video_recognition(object):
         _translate = QtCore.QCoreApplication.translate
         Progress_video_recognition.setWindowTitle(
             _translate("Progress_video_recognition", "Progress_video_recognition"))
-        self.label_progress.setText(_translate("Progress_video_recognition", "Обработка видео"))
+        self.label_progress.setText(_translate("Progress_video_recognition", "Обработка видео:"))
         self.pushButton_menu.setText(_translate("Progress_video_recognition", "В главное меню"))
         self.pushButton_exit.setText(_translate("Progress_video_recognition", "Выход"))
         self.pushButton_start.setText(_translate("Progress_video_recognition", "Начало распознавания"))

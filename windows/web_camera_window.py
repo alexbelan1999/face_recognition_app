@@ -97,7 +97,7 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         Web_camera.web_camera_info = info
-        path = "../pickle/encodings/*"
+        path = "./pickle/encodings/*"
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)

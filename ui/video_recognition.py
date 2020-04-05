@@ -1,11 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ui.load_icon as li
 
 
 class Ui_Video_recognition(object):
     def setupUi(self, Video_recognition):
         Video_recognition.setObjectName("Video_recognition")
         Video_recognition.setFixedSize(520, 520)
-        ico = QtGui.QIcon("mylogo.png")
+        ico = li.load()
         Video_recognition.setWindowIcon(ico)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
@@ -104,7 +105,7 @@ class Ui_Video_recognition(object):
     def retranslateUi(self, Video_recognition):
         _translate = QtCore.QCoreApplication.translate
         Video_recognition.setWindowTitle(_translate("Video_recognition", "Recognition"))
-        self.label_combo.setText(_translate("Video_recognition", "Выберете подготовленный файл для распознавания"))
+        self.label_combo.setText(_translate("Video_recognition", "Выберете подготовленный файл для распознавания:"))
         self.pushButton_file.setText(_translate("Video_recognition", "Выберите видео файл для распознавания"))
         self.label_file.setText(_translate("Video_recognition", "Файл:"))
         self.label_seconds.setText(_translate("Video_recognition", "Частота обработки кадров (в секундах):"))
