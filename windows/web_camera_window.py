@@ -7,6 +7,7 @@ import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QPixmap, QImage
+
 import dump_and_load_pickle as dalp
 import windows.menu_window as menu
 import windows.report_window as reportw
@@ -15,6 +16,7 @@ from ui.web_camera import Ui_Web_camera
 
 class Web_camera_thread(QThread):
     str_signal = pyqtSignal(str)
+
     def __init__(self, mainwindow, parent=None):
         super(Web_camera_thread, self).__init__()
         self.mainwindow = mainwindow
@@ -31,7 +33,7 @@ class Web_camera_thread(QThread):
         tolerance = float(self.mainwindow.ui.lineEdit_tolerance.text())
 
         model = ""
-        if self.mainwindow.ui.radioButton3.isChecked():
+        if self.mainwindow.ui.radioButton4.isChecked():
             model = "hog"
         else:
             model = "cnn"
@@ -42,8 +44,13 @@ class Web_camera_thread(QThread):
 
         if self.mainwindow.ui.radioButton1.isChecked():
             video_capture_number = 0
+
+        elif self.mainwindow.ui.radioButton2.isChecked():
+            video_capture_number = 1
+
         else:
             video_capture_number = 2
+
         video_capture = cv2.VideoCapture(video_capture_number)
         names = set()
         while True:
@@ -64,7 +71,6 @@ class Web_camera_thread(QThread):
                     name = known_face_names[best_match_index]
                 if (name not in names) and (name != "Unknown"):
                     self.str_signal.emit(name)
-                    #self.mainwindow.ui.textEdit.append(name)
                     names.add(name)
 
                 cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 3)
@@ -97,7 +103,7 @@ class Web_camera(QtWidgets.QMainWindow):
             self.ui.comboBox.addItem(item)
 
         self.ui.radioButton1.setChecked(True)
-        self.ui.radioButton3.setChecked(True)
+        self.ui.radioButton4.setChecked(True)
         self.ui.lineEdit_tolerance.setText("0.6")
         self.web_camera_thread = Web_camera_thread(mainwindow=self)
         self.web_camera_thread.str_signal.connect(self.add_text)
@@ -107,6 +113,7 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_menu.clicked.connect(self.back_menu)
         self.ui.pushButton_report.clicked.connect(self.report)
+        self.ui.pushButton_test.clicked.connect(self.test_camera)
 
     def add_text(self, name):
         self.ui.textEdit.append(name)
@@ -135,3 +142,24 @@ class Web_camera(QtWidgets.QMainWindow):
         self.open_report = reportw.Report(Web_camera.web_camera_info, report, file)
         self.open_report.show()
         self.close()
+
+    def test_camera(self):
+        video_capture_number = 0
+
+        if self.ui.radioButton1.isChecked():
+            video_capture_number = 0
+
+        elif self.ui.radioButton2.isChecked():
+            video_capture_number = 1
+
+        else:
+            video_capture_number = 2
+
+        video_capture = cv2.VideoCapture(video_capture_number)
+
+        if video_capture.isOpened():
+            self.ui.label_test.setText("OK!")
+            video_capture.release()
+        else:
+            self.ui.label_test.setText("ERROR!")
+            video_capture.release()
