@@ -4,7 +4,7 @@ import ui.load_icon as li
 class Ui_Web_camera(object):
     def setupUi(self, Web_camera):
         Web_camera.setObjectName("Web_camera")
-        Web_camera.setFixedSize(1050, 700)
+        Web_camera.setFixedSize(1155, 700)
         ico = li.load()
         Web_camera.setWindowIcon(ico)
         font = QtGui.QFont()
@@ -36,7 +36,7 @@ class Ui_Web_camera(object):
 
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(509, 59, 202, 31))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(509, 59, 307, 38))
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName("horizontalLayout")
 
@@ -52,36 +52,52 @@ class Ui_Web_camera(object):
         self.radioButton2.setObjectName("radioButton2")
         self.horizontalLayout.addWidget(self.radioButton2)
 
-        self.horizontalLayoutWidget1 = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget1.setObjectName("horizontalLayoutWidget1")
-        self.horizontalLayoutWidget1.setGeometry(QtCore.QRect(719, 59, 290, 38))
-        self.horizontalLayout1 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget1)
-        self.horizontalLayout1.setObjectName("horizontalLayout1")
-
-        self.radioButton3 = QtWidgets.QRadioButton(self.horizontalLayoutWidget1)
+        self.radioButton3 = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
         self.radioButton3.setGeometry(QtCore.QRect(720, 60, 95, 30))
         self.radioButton3.setFont(font)
         self.radioButton3.setObjectName("radioButton3")
-        self.horizontalLayout1.addWidget(self.radioButton3)
+        self.horizontalLayout.addWidget(self.radioButton3)
+
+        self.horizontalLayoutWidget1 = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget1.setObjectName("horizontalLayoutWidget1")
+        self.horizontalLayoutWidget1.setGeometry(QtCore.QRect(824, 59, 290, 38))
+        self.horizontalLayout1 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget1)
+        self.horizontalLayout1.setObjectName("horizontalLayout1")
 
         self.radioButton4 = QtWidgets.QRadioButton(self.horizontalLayoutWidget1)
-        self.radioButton4.setGeometry(QtCore.QRect(825, 60, 175, 30))
+        self.radioButton4.setGeometry(QtCore.QRect(825, 60, 95, 30))
         self.radioButton4.setFont(font)
         self.radioButton4.setObjectName("radioButton4")
         self.horizontalLayout1.addWidget(self.radioButton4)
+
+        self.radioButton5 = QtWidgets.QRadioButton(self.horizontalLayoutWidget1)
+        self.radioButton5.setGeometry(QtCore.QRect(930, 60, 175, 30))
+        self.radioButton5.setFont(font)
+        self.radioButton5.setObjectName("radioButton5")
+        self.horizontalLayout1.addWidget(self.radioButton5)
 
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(50, 100, 130, 30))
         self.label.setFont(font)
         self.label.setObjectName("label")
 
+        self.pushButton_test = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_test.setGeometry(QtCore.QRect(510, 100, 130, 30))
+        self.pushButton_test.setFont(font)
+        self.pushButton_test.setObjectName("pushButton_start")
+
+        self.label_test = QtWidgets.QLabel(self.centralwidget)
+        self.label_test.setGeometry(QtCore.QRect(650, 100, 100, 30))
+        self.label_test.setFont(font)
+        self.label_test.setObjectName("label_test")
+
         self.label_tolerance = QtWidgets.QLabel(self.centralwidget)
-        self.label_tolerance.setGeometry(QtCore.QRect(510, 100, 130, 30))
+        self.label_tolerance.setGeometry(QtCore.QRect(760, 100, 130, 30))
         self.label_tolerance.setFont(font)
         self.label_tolerance.setObjectName("label_tolerance")
 
         self.lineEdit_tolerance = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_tolerance.setGeometry(QtCore.QRect(650, 100, 50, 30))
+        self.lineEdit_tolerance.setGeometry(QtCore.QRect(900, 100, 50, 30))
         self.lineEdit_tolerance.setFont(font)
         self.lineEdit_tolerance.setObjectName("lineEdit_tolerance")
 
@@ -90,7 +106,7 @@ class Ui_Web_camera(object):
         self.label_video.setObjectName("label_video")
 
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(700, 140, 300, 480))
+        self.textEdit.setGeometry(QtCore.QRect(700, 140, 405, 480))
         self.textEdit.setFont(font)
         self.textEdit.setObjectName("textEdit")
 
@@ -145,7 +161,9 @@ class Ui_Web_camera(object):
         self.label_camera.setText(_translate("Web_camera", "Выберете камеру:"))
         self.radioButton1.setText(_translate("Web_camera", "Camera1"))
         self.radioButton2.setText(_translate("Web_camera", "Camera2"))
+        self.radioButton3.setText(_translate("Web_camera", "Camera3"))
         self.label_tolerance.setText(_translate("Web_camera", "Точность (0-1):"))
         self.label_model.setText(_translate("Web_camera", "Модель для распознования:"))
-        self.radioButton3.setText(_translate("Web_camera", "hog (CPU)"))
-        self.radioButton4.setText(_translate("Web_camera", "cnn (GPU/CUDA)"))
+        self.radioButton4.setText(_translate("Web_camera", "hog (CPU)"))
+        self.radioButton5.setText(_translate("Web_camera", "cnn (GPU/CUDA)"))
+        self.pushButton_test.setText(_translate("Web_camera", "Тест камеры"))

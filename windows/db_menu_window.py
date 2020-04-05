@@ -53,10 +53,15 @@ class DB_menu(QtWidgets.QMainWindow):
 
     def report(self):
         instructor_id = DB_menu.instructor[0][0]
+        instructor_name = DB_menu.instructor[0][1]
         group_id = DB_menu.group1.get(self.ui.comboBox_group.currentText())
+        group_name = self.ui.comboBox_group.currentText()
         subject_id = DB_menu.subject1.get(self.ui.comboBox_subject.currentText())
+        subject_name = self.ui.comboBox_subject.currentText()
         type_id = DB_menu.class_type1.get(self.ui.comboBox_class_type.currentText())
-        self.open_report = reportw.DB_report(DB_menu.DB_menu_info, int(instructor_id), int(group_id), int(subject_id),
-                                             int(type_id))
+        type_name = self.ui.comboBox_class_type.currentText()
+        report_ids = [instructor_id, group_id, subject_id, type_id]
+        report_names = [instructor_name, group_name, subject_name, type_name]
+        self.open_report = reportw.DB_report(DB_menu.DB_menu_info, report_ids, report_names)
         self.open_report.show()
         self.close()

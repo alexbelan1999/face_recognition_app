@@ -27,6 +27,7 @@ class Video_recognition(QtWidgets.QMainWindow):
 
         self.ui.radioButton1.setChecked(True)
         self.ui.lineEdit_tolerance.setText("0.6")
+        self.ui.lineEdit_seconds.setText("1.0")
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
         self.ui.pushButton_next.clicked.connect(self.next)

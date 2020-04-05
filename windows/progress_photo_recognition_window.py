@@ -3,12 +3,58 @@ import glob
 import face_recognition
 import numpy as np
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import QThread, pyqtSignal
 
 import dump_and_load_pickle as dalp
 import postgresql as pg
 import windows.menu_window as menu
 import windows.report_window as reportw
 from ui.progress_photo_recognition import Ui_Progress_photo_recognition
+
+
+class Progress_photo_recognition_thread(QThread):
+    set_signal = pyqtSignal(set)
+
+    def __init__(self, mainwindow, parent=None):
+        super(Progress_photo_recognition_thread, self).__init__()
+        self.mainwindow = mainwindow
+
+    def run(self):
+
+        path = Progress_photo_recognition.dir + "/*"
+        known_face_encodings = dalp.load(Progress_photo_recognition.file1, 0)
+        known_face_names = dalp.load(Progress_photo_recognition.file2, 1)
+        files = len(glob.glob(path))
+        number = 0
+        names = set()
+
+        for file in glob.glob(path):
+            number += 1
+            unknown_image = face_recognition.load_image_file(file)
+
+            face_locations = face_recognition.face_locations(unknown_image, model=Progress_photo_recognition.model)
+            face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
+
+            for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding,
+                                                         tolerance=Progress_photo_recognition.tolerance)
+                name = "Unknown"
+
+                face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                best_match_index = np.argmin(face_distances)
+
+                if matches[best_match_index]:
+                    name = known_face_names[best_match_index]
+                if (name not in names) and (name != "Unknown"):
+                    names.add(name)
+
+            self.mainwindow.ui.progressBar.setValue(round(number / files, 2) * 100)
+        self.set_signal.emit(names)
+        if number == files:
+            self.mainwindow.ui.pushButton_exit.setDisabled(False)
+            self.mainwindow.ui.pushButton_menu.setDisabled(False)
+            self.mainwindow.ui.pushButton_report.setDisabled(False)
+            self.mainwindow.ui.pushButton_add.setDisabled(False)
 
 
 class Progress_photo_recognition(QtWidgets.QMainWindow):
@@ -37,6 +83,8 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
         names = pg.select(info, sql)
         for name in names:
             self.ui.comboBox.addItem(name[0])
+        self.progress_photo_recognition_thread = Progress_photo_recognition_thread(mainwindow=self)
+        self.progress_photo_recognition_thread.set_signal.connect(self.add_text)
 
         self.ui.pushButton_menu.clicked.connect(self.back_menu)
         self.ui.pushButton_exit.clicked.connect(self.close)
@@ -49,49 +97,16 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
         self.open_menu.show()
         self.close()
 
+    def add_text(self, names):
+        for name in names:
+            self.ui.textEdit.append(name)
+
     def start_progress(self):
         self.ui.pushButton_exit.setDisabled(True)
         self.ui.pushButton_menu.setDisabled(True)
         self.ui.pushButton_report.setDisabled(True)
         self.ui.pushButton_add.setDisabled(True)
-        self.progress()
-
-    def progress(self):
-        path = Progress_photo_recognition.dir + "/*"
-        known_face_encodings = dalp.load(Progress_photo_recognition.file1, 0)
-        known_face_names = dalp.load(Progress_photo_recognition.file2, 1)
-        files = len(glob.glob(path))
-        number = 0
-        names = set()
-
-        for file in glob.glob(path):
-            number += 1
-            unknown_image = face_recognition.load_image_file(file)
-
-            face_locations = face_recognition.face_locations(unknown_image, model=Progress_photo_recognition.model)
-            face_encodings = face_recognition.face_encodings(unknown_image, face_locations)
-
-            for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-                matches = face_recognition.compare_faces(known_face_encodings, face_encoding,
-                                                         tolerance=Progress_photo_recognition.tolerance)
-                name = "Unknown"
-
-                face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
-                best_match_index = np.argmin(face_distances)
-
-                if matches[best_match_index]:
-                    name = known_face_names[best_match_index]
-                if (name not in names) and (name != "Unknown"):
-                    self.ui.textEdit.append(name)
-                    names.add(name)
-
-            self.ui.progressBar.setValue(round(number / files, 2) * 100)
-
-        if number == files:
-            self.ui.pushButton_exit.setDisabled(False)
-            self.ui.pushButton_menu.setDisabled(False)
-            self.ui.pushButton_report.setDisabled(False)
-            self.ui.pushButton_add.setDisabled(False)
+        self.progress_photo_recognition_thread.start()
 
     def report(self):
         report = self.ui.textEdit.toPlainText()
