@@ -62,12 +62,12 @@ class Ui_DB_menu(object):
         self.pushButton_back.setObjectName("pushButton_back")
 
         self.pushButton_exit = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_exit.setGeometry(QtCore.QRect(140, 180, 80, 30))
+        self.pushButton_exit.setGeometry(QtCore.QRect(135, 180, 80, 30))
         self.pushButton_exit.setFont(font)
         self.pushButton_exit.setObjectName("pushButton_exit")
 
         self.pushButton_report = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_report.setGeometry(QtCore.QRect(230, 180, 170, 30))
+        self.pushButton_report.setGeometry(QtCore.QRect(220, 180, 180, 30))
         self.pushButton_report.setFont(font)
         self.pushButton_report.setObjectName("pushButton_report")
 
@@ -93,5 +93,5 @@ class Ui_DB_menu(object):
         self.label_class_type.setText(_translate("DB_menu", "Вид занятия:"))
         self.pushButton_back.setText(_translate("DB_menu", "Назад"))
         self.pushButton_exit.setText(_translate("DB_menu", "Выход"))
-        self.pushButton_report.setText(_translate("DB_menu", "Сформировать отчёт"))
+        self.pushButton_report.setText(_translate("DB_menu", "Сформировать отчет"))
         self.label_group.setText(_translate("DB_menu", "Группа:"))
