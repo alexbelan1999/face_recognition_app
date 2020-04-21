@@ -12,10 +12,12 @@ class Info(QtWidgets.QMainWindow):
         self.ui = Ui_Info()
         self.ui.setupUi(self)
         Info.info_info = info
+
         self.ui.label_db1.setText(info[0])
         self.ui.label_user1.setText(info[1])
         self.ui.label_password1.setText(info[2])
         self.ui.label_host1.setText(info[3])
+
         self.ui.pushButton_back.clicked.connect(self.back)
         self.ui.pushButton_exit.clicked.connect(self.close)
 

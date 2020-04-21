@@ -21,6 +21,7 @@ class Progress_training_thread(QThread):
         path = Progress_training.dir + "/*"
         files = len(glob.glob(path))
         number = 0
+
         for file in glob.glob(path):
             number += 1
             image = face_recognition.load_image_file(file)

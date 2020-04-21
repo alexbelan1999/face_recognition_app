@@ -29,6 +29,7 @@ class Progress_video_recognition_thread(QThread):
         fps = input_movie.get(cv2.CAP_PROP_FPS)
         multiplier = round(fps * seconds)
         names = set()
+
         while True:
             ret, frame = input_movie.read()
             frame_number += 1
@@ -87,6 +88,7 @@ class Progress_video_recognition(QtWidgets.QMainWindow):
         self.ui.progressBar.setValue(0)
         sql = "SELECT full_name FROM public.students WHERE group_id = (SELECT id FROM public.groups WHERE name = '" + file + "');"
         names = pg.select(info, sql)
+
         for name in names:
             self.ui.comboBox.addItem(name[0])
 

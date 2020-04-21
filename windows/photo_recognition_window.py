@@ -22,6 +22,7 @@ class Photo_recognition(QtWidgets.QMainWindow):
         Photo_recognition.photo_recognition_info = info
 
         path = "./pickle/encodings/*"
+
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)

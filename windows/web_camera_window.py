@@ -61,6 +61,7 @@ class Web_camera_thread(QThread):
 
             face_locations = face_recognition.face_locations(rgb_frame, model=model)
             face_encodings = face_recognition.face_encodings(rgb_frame, face_locations)
+
             for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
                 matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=tolerance)
                 name = "Unknown"
@@ -80,8 +81,10 @@ class Web_camera_thread(QThread):
             pix = QPixmap.fromImage(img)
             self.mainwindow.ui.label_video.setPixmap(pix)
             key = cv2.waitKey(100)
+
             if self.stop_camera:
                 break
+
         video_capture.release()
 
     def terminate(self):
@@ -98,6 +101,7 @@ class Web_camera(QtWidgets.QMainWindow):
 
         Web_camera.web_camera_info = info
         path = "./pickle/encodings/*"
+
         for file in glob.glob(path):
             item = os.path.splitext(os.path.basename(file))[0]
             self.ui.comboBox.addItem(item)
