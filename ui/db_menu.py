@@ -75,6 +75,7 @@ class Ui_DB_menu(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         DB_menu.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(DB_menu)
         self.statusbar.setObjectName("statusbar")
         DB_menu.setStatusBar(self.statusbar)

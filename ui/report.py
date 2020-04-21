@@ -90,6 +90,7 @@ class Ui_Report(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Report.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Report)
         self.statusbar.setObjectName("statusbar")
         Report.setStatusBar(self.statusbar)

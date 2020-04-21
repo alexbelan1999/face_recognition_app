@@ -45,6 +45,7 @@ class Ui_Progress_training(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Progress_training.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Progress_training)
         self.statusbar.setObjectName("statusbar")
         Progress_training.setStatusBar(self.statusbar)

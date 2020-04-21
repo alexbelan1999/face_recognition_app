@@ -45,6 +45,7 @@ class Ui_Recognition(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Recognition.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Recognition)
         self.statusbar.setObjectName("statusbar")
         Recognition.setStatusBar(self.statusbar)
@@ -56,7 +57,7 @@ class Ui_Recognition(object):
         _translate = QtCore.QCoreApplication.translate
         Recognition.setWindowTitle(_translate("Recognition", "Recognition"))
         self.pushButton_photo.setText(_translate("Recognition", "Распознавание по фото"))
-        self.pushButton_video.setText(_translate("Recognition", "Распознавиние по видео"))
+        self.pushButton_video.setText(_translate("Recognition", "Распознавание по видео"))
         self.pushButton_camera.setText(_translate("Recognition", "Распознавание с помощью веб-камеры"))
         self.pushButton_back.setText(_translate("Recognition", "Назад"))
         self.pushButton_exit.setText(_translate("Recognition", "Выход"))

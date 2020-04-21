@@ -64,6 +64,7 @@ class Ui_DB_report(object):
         self.pushButton_back.setGeometry(QtCore.QRect(50, 590, 140, 30))
         self.pushButton_back.setFont(font)
         self.pushButton_back.setObjectName("pushButton_back")
+
         self.pushButton_exit = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_exit.setGeometry(QtCore.QRect(200, 590, 170, 30))
         self.pushButton_exit.setFont(font)
@@ -85,7 +86,7 @@ class Ui_DB_report(object):
     def retranslateUi(self, DB_report):
         _translate = QtCore.QCoreApplication.translate
         DB_report.setWindowTitle(_translate("DB_report", "DB_report"))
-        self.label_instructor1.setText(_translate("DB_report", "Преподователь:"))
+        self.label_instructor1.setText(_translate("DB_report", "Преподаватель:"))
         self.label_group1.setText(_translate("DB_report", "Группа:"))
         self.label_subject1.setText(_translate("DB_report", "Предмет:"))
         self.label_class_type1.setText(_translate("DB_report", "Вид занятия:"))

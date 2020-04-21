@@ -85,6 +85,7 @@ class Ui_Photo_recognition(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Photo_recognition.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Photo_recognition)
         self.statusbar.setObjectName("statusbar")
         Photo_recognition.setStatusBar(self.statusbar)
@@ -95,13 +96,13 @@ class Ui_Photo_recognition(object):
     def retranslateUi(self, Photo_recognition):
         _translate = QtCore.QCoreApplication.translate
         Photo_recognition.setWindowTitle(_translate("Photo_recognition", "Recognition"))
-        self.label_combo.setText(_translate("Photo_recognition", "Выберете подготовленный файл для распознавания:"))
+        self.label_combo.setText(_translate("Photo_recognition", "Выберите подготовленный файл для распознавания:"))
         self.pushButton_dir.setText(_translate("Photo_recognition", "Выберите католог с файлами для распознавания"))
         self.label_dir.setText(_translate("Photo_recognition", "Каталог:"))
         self.pushButton_back.setText(_translate("Photo_recognition", "Назад"))
         self.pushButton_exit.setText(_translate("Photo_recognition", "Выход"))
         self.pushButton_next.setText(_translate("Photo_recognition", "Далее"))
         self.label_tolerance.setText(_translate("Photo_recognition", "Точность (0-1):"))
-        self.label_model.setText(_translate("Photo_recognition", "Модель для распознования:"))
+        self.label_model.setText(_translate("Photo_recognition", "Модель для распознавания:"))
         self.radioButton1.setText(_translate("Photo_recognition", "hog (CPU)"))
         self.radioButton2.setText(_translate("Photo_recognition", "cnn (GPU/CUDA)"))

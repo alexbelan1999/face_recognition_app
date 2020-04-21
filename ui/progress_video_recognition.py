@@ -65,6 +65,7 @@ class Ui_Progress_video_recognition(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Progress_video_recognition.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Progress_video_recognition)
         self.statusbar.setObjectName("statusbar")
         Progress_video_recognition.setStatusBar(self.statusbar)
