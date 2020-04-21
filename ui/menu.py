@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import ui.load_icon as li
+
 
 class Ui_Menu(object):
     def setupUi(self, Menu):

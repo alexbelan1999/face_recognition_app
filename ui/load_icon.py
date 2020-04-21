@@ -1,5 +1,9 @@
-import sys, os, os.path
+import os
+import os.path
+import sys
+
 from PyQt5 import QtGui
+
 
 def load():
     if hasattr(sys, "_MEIPASS"):

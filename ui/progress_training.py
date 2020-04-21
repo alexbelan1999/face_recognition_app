@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import ui.load_icon as li
+
 
 class Ui_Progress_training(object):
     def setupUi(self, Progress_training):
@@ -44,6 +46,7 @@ class Ui_Progress_training(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Progress_training.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Progress_training)
         self.statusbar.setObjectName("statusbar")
         Progress_training.setStatusBar(self.statusbar)

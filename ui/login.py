@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import postgresql as pg
 import ui.load_icon as li
 
+
 class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")

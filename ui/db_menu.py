@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import ui.load_icon as li
+
 
 class Ui_DB_menu(object):
     def setupUi(self, DB_menu):
@@ -74,6 +76,7 @@ class Ui_DB_menu(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         DB_menu.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(DB_menu)
         self.statusbar.setObjectName("statusbar")
         DB_menu.setStatusBar(self.statusbar)
@@ -90,5 +93,5 @@ class Ui_DB_menu(object):
         self.label_class_type.setText(_translate("DB_menu", "Вид занятия:"))
         self.pushButton_back.setText(_translate("DB_menu", "Назад"))
         self.pushButton_exit.setText(_translate("DB_menu", "Выход"))
-        self.pushButton_report.setText(_translate("DB_menu", "Сформровать отчет"))
+        self.pushButton_report.setText(_translate("DB_menu", "Сформировать отчёт"))
         self.label_group.setText(_translate("DB_menu", "Группа:"))

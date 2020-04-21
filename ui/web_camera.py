@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import ui.load_icon as li
+
 
 class Ui_Web_camera(object):
     def setupUi(self, Web_camera):
@@ -140,6 +142,7 @@ class Ui_Web_camera(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Web_camera.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Web_camera)
         self.statusbar.setObjectName("statusbar")
         Web_camera.setStatusBar(self.statusbar)
@@ -157,8 +160,8 @@ class Ui_Web_camera(object):
         self.pushButton_menu.setText(_translate("Web_camera", "В главное меню"))
         self.pushButton_exit.setText(_translate("Web_camera", "Выход"))
         self.pushButton_report.setText(_translate("Web_camera", "Отправить отчет"))
-        self.label_combo.setText(_translate("Web_camera", "Выберете подготовленный файл для распознавания:"))
-        self.label_camera.setText(_translate("Web_camera", "Выберете камеру:"))
+        self.label_combo.setText(_translate("Web_camera", "Выберите подготовленный файл для распознавания:"))
+        self.label_camera.setText(_translate("Web_camera", "Выберите камеру:"))
         self.radioButton1.setText(_translate("Web_camera", "Camera1"))
         self.radioButton2.setText(_translate("Web_camera", "Camera2"))
         self.radioButton3.setText(_translate("Web_camera", "Camera3"))

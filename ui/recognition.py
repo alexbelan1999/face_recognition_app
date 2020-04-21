@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import ui.load_icon as li
+
 
 class Ui_Recognition(object):
     def setupUi(self, Recognition):
@@ -44,6 +46,7 @@ class Ui_Recognition(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Recognition.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Recognition)
         self.statusbar.setObjectName("statusbar")
         Recognition.setStatusBar(self.statusbar)

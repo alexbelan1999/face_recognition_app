@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 import ui.load_icon as li
+
 
 class Ui_Video_recognition(object):
     def setupUi(self, Video_recognition):
@@ -94,6 +96,7 @@ class Ui_Video_recognition(object):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         Video_recognition.setMenuBar(self.menubar)
+
         self.statusbar = QtWidgets.QStatusBar(Video_recognition)
         self.statusbar.setObjectName("statusbar")
         Video_recognition.setStatusBar(self.statusbar)
@@ -104,7 +107,7 @@ class Ui_Video_recognition(object):
     def retranslateUi(self, Video_recognition):
         _translate = QtCore.QCoreApplication.translate
         Video_recognition.setWindowTitle(_translate("Video_recognition", "Recognition"))
-        self.label_combo.setText(_translate("Video_recognition", "Выберете подготовленный файл для распознавания"))
+        self.label_combo.setText(_translate("Video_recognition", "Выберите подготовленный файл для распознавания"))
         self.pushButton_file.setText(_translate("Video_recognition", "Выберите видео файл для распознавания"))
         self.label_file.setText(_translate("Video_recognition", "Файл:"))
         self.label_seconds.setText(_translate("Video_recognition", "Частота обработки кадров (в секундах):"))
@@ -112,6 +115,6 @@ class Ui_Video_recognition(object):
         self.pushButton_exit.setText(_translate("Video_recognition", "Выход"))
         self.pushButton_next.setText(_translate("Video_recognition", "Далее"))
         self.label_tolerance.setText(_translate("Video_recognition", "Точность (0-1):"))
-        self.label_model.setText(_translate("Video_recognition", "Модель для распознования:"))
+        self.label_model.setText(_translate("Video_recognition", "Модель для распознавания:"))
         self.radioButton1.setText(_translate("Video_recognition", "hog (CPU)"))
         self.radioButton2.setText(_translate("Video_recognition", "cnn (GPU/CUDA)"))
