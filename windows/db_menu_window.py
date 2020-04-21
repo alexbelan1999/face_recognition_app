@@ -26,18 +26,21 @@ class DB_menu(QtWidgets.QMainWindow):
 
         sql2 = "SELECT id, name FROM public.groups;"
         group2 = pg.select(info, sql2)
+
         for group in group2:
             self.ui.comboBox_group.addItem(group[1])
             DB_menu.group1[group[1]] = group[0]
 
         sql3 = "SELECT id, name FROM public.subject;"
         subject2 = pg.select(info, sql3)
+
         for subject in subject2:
             self.ui.comboBox_subject.addItem(subject[1])
             DB_menu.subject1[subject[1]] = subject[0]
 
         sql4 = "SELECT id, name FROM public.class_type;"
         class_type2 = pg.select(info, sql4)
+
         for class_type in class_type2:
             self.ui.comboBox_class_type.addItem(class_type[1])
             DB_menu.class_type1[class_type[1]] = class_type[0]

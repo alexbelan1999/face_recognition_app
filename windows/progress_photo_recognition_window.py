@@ -20,7 +20,6 @@ class Progress_photo_recognition_thread(QThread):
         self.mainwindow = mainwindow
 
     def run(self):
-
         path = Progress_photo_recognition.dir + "/*"
         known_face_encodings = dalp.load(Progress_photo_recognition.file1, 0)
         known_face_names = dalp.load(Progress_photo_recognition.file2, 1)
@@ -49,7 +48,9 @@ class Progress_photo_recognition_thread(QThread):
                     names.add(name)
 
             self.mainwindow.ui.progressBar.setValue(round(number / files, 2) * 100)
+
         self.set_signal.emit(names)
+
         if number == files:
             self.mainwindow.ui.pushButton_exit.setDisabled(False)
             self.mainwindow.ui.pushButton_menu.setDisabled(False)
@@ -81,8 +82,10 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
 
         sql = "SELECT full_name FROM public.students WHERE group_id = (SELECT id FROM public.groups WHERE name = '" + file1 + "');"
         names = pg.select(info, sql)
+
         for name in names:
             self.ui.comboBox.addItem(name[0])
+
         self.progress_photo_recognition_thread = Progress_photo_recognition_thread(mainwindow=self)
         self.progress_photo_recognition_thread.set_signal.connect(self.add_text)
 

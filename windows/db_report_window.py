@@ -24,6 +24,7 @@ class DB_report(QtWidgets.QMainWindow):
         students = pg.select(info, sql1)
 
         names = []
+
         for st in students:
             names.append(st[1])
 
@@ -37,14 +38,17 @@ class DB_report(QtWidgets.QMainWindow):
         attendance = pg.select(info, sql3)
 
         date_class = []
+
         if len(events[0]) != 0:
             for date_c in events:
                 date_class.append(str(date_c[2]) + " пара " + str(date_c[1]))
 
             model = QtGui.QStandardItemModel()
             result = []
+
             for stud in students:
                 res = []
+
                 for event in events:
                     for att in attendance:
                         if stud[0] == att[2] and event[0] == att[1]:
@@ -54,6 +58,7 @@ class DB_report(QtWidgets.QMainWindow):
                     else:
                         item = QtGui.QStandardItem("--")
                         res.append(item)
+
                 result.append(res)
 
             for row in result:
@@ -63,6 +68,7 @@ class DB_report(QtWidgets.QMainWindow):
             model.setVerticalHeaderLabels(names)
 
             self.ui.tableView.setModel(model)
+
             for i in range(0, model.columnCount()):
                 self.ui.tableView.setColumnWidth(i, 150)
 

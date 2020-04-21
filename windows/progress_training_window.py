@@ -21,6 +21,7 @@ class Progress_training_thread(QThread):
         path = Progress_training.dir + "/*"
         files = len(glob.glob(path))
         number = 0
+
         for file in glob.glob(path):
             number += 1
             image = face_recognition.load_image_file(file)
@@ -30,6 +31,7 @@ class Progress_training_thread(QThread):
 
         dalp.dump(known_face_encodings, Progress_training.file, 0)
         dalp.dump(known_face_names, Progress_training.file + "names", 1)
+
         if number == files:
             self.mainwindow.ui.pushButton_exit.setDisabled(False)
             self.mainwindow.ui.pushButton_menu.setDisabled(False)

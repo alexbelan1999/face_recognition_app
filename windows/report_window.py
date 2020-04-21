@@ -40,17 +40,20 @@ class Report(QtWidgets.QMainWindow):
 
         sql3 = "SELECT id, full_name FROM public.students where group_id = " + str(Report.group_id) + ";"
         students2 = pg.select(info, sql3)
+
         for student in students2:
             Report.students1[student[1]] = student[0]
 
         sql4 = "SELECT id, name FROM public.subject;"
         subject2 = pg.select(info, sql4)
+
         for subject in subject2:
             self.ui.comboBox_subject.addItem(subject[1])
             Report.subject1[subject[1]] = subject[0]
 
         sql5 = "SELECT id, name FROM public.class_type;"
         class_type2 = pg.select(info, sql5)
+
         for class_type in class_type2:
             self.ui.comboBox_type.addItem(class_type[1])
             Report.class_type1[class_type[1]] = class_type[0]
