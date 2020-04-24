@@ -4,7 +4,7 @@ import psycopg2
 def insert(info: list, event: list, student_id: list):
     exit = True
     try:
-        connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3])
+        connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3], port="5432")
         with connection.cursor() as cursor:
             sql1 = "INSERT INTO public.event(instructor_id, subject_id, class_type_id, classes_id, class_date, group_id) VALUES (" + str(
                 event[0]) + "," + str(event[1]) + "," + str(
@@ -31,9 +31,12 @@ def test_connection(dbname: str, user: str, password: str, host: str):
     exit = True
 
     try:
-        connection = psycopg2.connect(dbname=dbname, user=user, password=password, host=host)
+        connection = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port="5432")
 
-    except psycopg2.OperationalError:
+    except Exception as e:
+
+        print('Нет соединения с базой:', str(e))
+
         exit = False
 
     finally:
@@ -46,7 +49,7 @@ def select(info: list, sql: str):
     exit = True
     result = []
     try:
-        connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3])
+        connection = psycopg2.connect(dbname=info[0], user=info[1], password=info[2], host=info[3], port="5432")
         with connection.cursor() as cursor:
             cursor.execute(sql)
             rows = cursor.fetchall()
