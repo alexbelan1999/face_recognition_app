@@ -12,7 +12,7 @@ from ui.progress_training import Ui_Progress_training
 
 class Progress_training_thread(QThread):
     def __init__(self, mainwindow, parent=None):
-        super(Progress_training_thread, self).__init__()
+        super(Progress_training_thread, self).__init__(parent)
         self.mainwindow = mainwindow
 
     def run(self):

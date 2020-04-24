@@ -77,7 +77,6 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
         Progress_photo_recognition.dir = dir
         Progress_photo_recognition.model = model
         Progress_photo_recognition.tolerance = tolerance
-
         self.ui.progressBar.setValue(0)
 
         sql = "SELECT full_name FROM public.students WHERE group_id = (SELECT id FROM public.groups WHERE name = '" + file1 + "');"
