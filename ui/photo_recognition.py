@@ -102,7 +102,7 @@ class Ui_Photo_recognition(object):
         self.pushButton_back.setText(_translate("Photo_recognition", "Назад"))
         self.pushButton_exit.setText(_translate("Photo_recognition", "Выход"))
         self.pushButton_next.setText(_translate("Photo_recognition", "Далее"))
-        self.label_tolerance.setText(_translate("Photo_recognition", "Точность (0-1):"))
+        self.label_tolerance.setText(_translate("Photo_recognition", "Погрешность:"))
         self.label_model.setText(_translate("Photo_recognition", "Модель для распознавания:"))
         self.radioButton1.setText(_translate("Photo_recognition", "hog (CPU)"))
         self.radioButton2.setText(_translate("Photo_recognition", "cnn (GPU/CUDA)"))

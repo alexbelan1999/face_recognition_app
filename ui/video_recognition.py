@@ -113,7 +113,7 @@ class Ui_Video_recognition(object):
         self.pushButton_back.setText(_translate("Video_recognition", "Назад"))
         self.pushButton_exit.setText(_translate("Video_recognition", "Выход"))
         self.pushButton_next.setText(_translate("Video_recognition", "Далее"))
-        self.label_tolerance.setText(_translate("Video_recognition", "Точность (0-1):"))
+        self.label_tolerance.setText(_translate("Video_recognition", "Погрешность:"))
         self.label_model.setText(_translate("Video_recognition", "Модель для распознавания:"))
         self.radioButton1.setText(_translate("Video_recognition", "hog (CPU)"))
         self.radioButton2.setText(_translate("Video_recognition", "cnn (GPU/CUDA)"))

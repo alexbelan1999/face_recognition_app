@@ -33,10 +33,7 @@ def test_connection(dbname: str, user: str, password: str, host: str):
     try:
         connection = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port="5432")
 
-    except Exception as e:
-
-        print('Нет соединения с базой:', str(e))
-
+    except psycopg2.OperationalError:
         exit = False
 
     finally:
