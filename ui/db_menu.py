@@ -93,5 +93,5 @@ class Ui_DB_menu(object):
         self.label_class_type.setText(_translate("DB_menu", "Вид занятия:"))
         self.pushButton_back.setText(_translate("DB_menu", "Назад"))
         self.pushButton_exit.setText(_translate("DB_menu", "Выход"))
-        self.pushButton_report.setText(_translate("DB_menu", "Сформировать отчет"))
+        self.pushButton_report.setText(_translate("DB_menu", "Сформировать отчёт"))
         self.label_group.setText(_translate("DB_menu", "Группа:"))

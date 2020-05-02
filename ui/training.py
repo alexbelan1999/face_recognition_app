@@ -73,7 +73,7 @@ class Ui_Training(object):
         _translate = QtCore.QCoreApplication.translate
         Training.setWindowTitle(_translate("Training", "Training"))
         self.label_file.setText(_translate("Training", "Введите имя файла:"))
-        self.pushButton_dir.setText(_translate("Training", "Выберите каталог для подготовки:"))
+        self.pushButton_dir.setText(_translate("Training", "Выберите каталог для подготовки"))
         self.pushButton_back.setText(_translate("Training", "Назад"))
         self.pushButton_exit.setText(_translate("Training", "Выход"))
         self.pushButton_next.setText(_translate("Training", "Далее"))

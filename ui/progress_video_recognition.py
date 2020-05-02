@@ -78,9 +78,9 @@ class Ui_Progress_video_recognition(object):
         _translate = QtCore.QCoreApplication.translate
         Progress_video_recognition.setWindowTitle(
             _translate("Progress_video_recognition", "Progress_video_recognition"))
-        self.label_progress.setText(_translate("Progress_video_recognition", "Обработка видео"))
+        self.label_progress.setText(_translate("Progress_video_recognition", "Обработка видео:"))
         self.pushButton_menu.setText(_translate("Progress_video_recognition", "В главное меню"))
         self.pushButton_exit.setText(_translate("Progress_video_recognition", "Выход"))
         self.pushButton_start.setText(_translate("Progress_video_recognition", "Начало распознавания"))
-        self.pushButton_report.setText(_translate("Progress_video_recognition", "Отправить отчет"))
+        self.pushButton_report.setText(_translate("Progress_video_recognition", "Отправить отчёт"))
         self.pushButton_add.setText(_translate("Progress_video_recognition", "Добавить студента"))

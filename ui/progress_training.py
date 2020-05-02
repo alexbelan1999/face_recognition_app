@@ -57,7 +57,7 @@ class Ui_Progress_training(object):
     def retranslateUi(self, Progress_training):
         _translate = QtCore.QCoreApplication.translate
         Progress_training.setWindowTitle(_translate("Progress_training", "Progress_training"))
-        self.label_progress.setText(_translate("Progress_training", "Обработка файлов"))
+        self.label_progress.setText(_translate("Progress_training", "Обработка файлов:"))
         self.pushButton_menu.setText(_translate("Progress_training", "В главное меню"))
         self.pushButton_exit.setText(_translate("Progress_training", "Выход"))
         self.pushButton_start.setText(_translate("Progress_training", "Начало обработки"))
