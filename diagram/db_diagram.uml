@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>b07326b7-6fa8-4ec4-ad14-dee10c8950f7.SCHEMA:face_rec_app.public</OriginalElement>
+  <nodes>
+    <node x="317.59878322126167" y="506.9999999999999">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.attendance</node>
+    <node x="56.407300672430324" y="332.8757604867115">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.students</node>
+    <node x="70.62011390554048" y="162.4862031581518">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.groups</node>
+    <node x="620.5661223182836" y="234.58661543387768">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.subject</node>
+    <node x="420.88792827409543" y="226.68844060198526">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.instructor</node>
+    <node x="72.60790906179957" y="15.276977265449887">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.specialty</node>
+    <node x="266.6618635926993" y="220.48479026577013">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.class_type</node>
+    <node x="799.5946205571568" y="234.16298430995835">b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.classes</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.attendance" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.students">
+      <point x="-57.19999999999999" y="-103.5" />
+      <point x="341.3" y="487.0" />
+      <point x="77.5" y="487.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.attendance" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.classes">
+      <point x="57.19999999999999" y="-103.5" />
+      <point x="455.7" y="487.0" />
+      <point x="706.5" y="487.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.attendance" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.subject">
+      <point x="28.600000000000023" y="-103.5" />
+      <point x="427.1" y="477.0" />
+      <point x="562.0" y="477.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.students" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.groups">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.groups" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.specialty">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.attendance" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.class_type">
+      <point x="-28.599999999999966" y="-103.5" />
+      <point x="369.90000000000003" y="477.0" />
+      <point x="238.0" y="477.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.attendance" target="b07326b7-6fa8-4ec4-ad14-dee10c8950f7.TABLE:face_rec_app.public.instructor">
+      <point x="0.0" y="-103.5" />
+      <point x="0.0" y="70.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5799721835883171" x="486.5" y="364.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
