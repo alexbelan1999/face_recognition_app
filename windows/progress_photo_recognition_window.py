@@ -120,4 +120,6 @@ class Progress_photo_recognition(QtWidgets.QMainWindow):
 
     def add(self):
         person = self.ui.comboBox.currentText()
-        self.ui.textEdit.append(person)
+        persons = self.ui.textEdit.toPlainText()
+        if person not in persons:
+            self.ui.textEdit.append(person)
