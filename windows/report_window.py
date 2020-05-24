@@ -67,6 +67,10 @@ class Report(QtWidgets.QMainWindow):
                 Report.number_class = time_c[0]
         self.ui.label_class2.setText(str(Report.number_class))
 
+        if Report.number_class == 0:
+            self.ui.pushButton_send.setDisabled(True)
+            self.ui.label_check.setText("Перерыв")
+
         Report.date1 = datetime.datetime.now().strftime("%Y-%m-%d")
         self.ui.label_date2.setText(Report.date1)
 
