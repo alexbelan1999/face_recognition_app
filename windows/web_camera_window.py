@@ -121,7 +121,9 @@ class Web_camera(QtWidgets.QMainWindow):
         self.ui.pushButton_test.clicked.connect(self.test_camera)
 
     def add_text(self, name):
-        self.ui.textEdit.append(name)
+        persons = self.ui.textEdit.toPlainText()
+        if name not in persons:
+            self.ui.textEdit.append(name)
 
     def start_rec(self):
         self.ui.pushButton_exit.setDisabled(True)
