@@ -58,7 +58,7 @@ class Ui_Recognition(object):
         _translate = QtCore.QCoreApplication.translate
         Recognition.setWindowTitle(_translate("Recognition", "Recognition"))
         self.pushButton_photo.setText(_translate("Recognition", "Распознавание по фото"))
-        self.pushButton_video.setText(_translate("Recognition", "Распознавиние в видео"))
+        self.pushButton_video.setText(_translate("Recognition", "Распознавание в видео"))
         self.pushButton_camera.setText(_translate("Recognition", "Распознавание с помощью веб-камеры"))
         self.pushButton_back.setText(_translate("Recognition", "Назад"))
         self.pushButton_exit.setText(_translate("Recognition", "Выход"))
